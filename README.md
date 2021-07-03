@@ -67,7 +67,7 @@ compton&
 
 The ~/.cwmrc is like this:
 
-``
+```
 # these fonts are for the menu
 #fontname "sans-serif:pixelsize=16"
 #fontname "monospace:pixelsize=15"
