@@ -10,7 +10,7 @@ However, as CWM is extremely minimalistic, other applications are used to obtain
 
 ## Screenshots of CWM
 
-![](images/VirtualBox_Fedora 33 - 1.png)
+![]('images/VirtualBox_Fedora 33 - 1.png')
 ![](images/VirtualBox_Fedora 33 - 2.png)
 ![](images/VirtualBox_Fedora 33 - 3.png)
 ![](images/VirtualBox_Fedora 33 - 4.png)
