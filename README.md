@@ -10,13 +10,13 @@ However, as CWM is extremely minimalistic, other applications are used to obtain
 
 ## Screenshots of CWM
 
-![]("images/VirtualBox_Fedora 33 - 1.png")
-![](images/VirtualBox_Fedora 33 - 2.png)
-![](images/VirtualBox_Fedora 33 - 3.png)
-![](images/VirtualBox_Fedora 33 - 4.png)
-![](images/VirtualBox_Fedora 33 - 5.png)
-![](images/VirtualBox_Fedora 33 - 6.png)
-![](images/VirtualBox_Fedora 33 - 7.png)
+![](images/VirtualBox1.png)
+![](images/VirtualBox2.png)
+![](images/VirtualBox3.png)
+![](images/VirtualBox4.png)
+![](images/VirtualBox5.png)
+![](images/VirtualBox6.png)
+![](images/VirtualBox7.png)
 
 
 ## Installation of CWM
