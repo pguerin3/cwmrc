@@ -17,6 +17,7 @@ However, as CWM is extremely minimalistic, other applications are used to obtain
 ![](images/VirtualBox5.png)
 ![](images/VirtualBox6.png)
 ![](images/VirtualBox7.png)
+![](images/VirtualBox8.png)
 
 
 ## Installation of CWM
@@ -75,13 +76,11 @@ The ~/.cwmrc is like this:
 fontname fixed-13
 
 moveamount 10	# granularity of finest movement
+vtile 60
+gap 5 5 5 5
 
 bind-key CM-Return	"urxvt"
-# suspect pointer doesn't work in VM due to special mouse support
-#bind-key 4-k	pointer-move-up
-#bind-key 4-j	pointer-move-down
-#bind-key 4-l	pointer-move-right
-#bind-key 4-h	pointer-move-left
+bind-key CM-minus	window-vtile
 
 # applications
 command xscreensaver	"xscreensaver"
