@@ -22,10 +22,12 @@ However, as CWM is extremely minimalistic, other applications are used to obtain
 ![](images/VirtualBox6.png)
 ![](images/VirtualBox7.png)
 
+
 ## Screenshots of tiled windows
 
 ![](images/VirtualBox8.png)
 ![](images/VirtualBox9.png)
+
 
 ## Screenshots with application launcher
 
@@ -70,7 +72,7 @@ Transparency in the terminal is performed by Compton:
 ## Configuration files
 
 
-### Bash Configuration file
+### Bash configuration file
 
 The ~/.bash_profile file is like this:
 ```
@@ -94,7 +96,7 @@ export LESS_TERMCAP_us=(printf '\e[04;36m') # enter underline mode - cyan
 
 Note - same as bash except the $ is removed
 
-### CWM Configuration file
+### CWM configuration file
 
 The ~/.cwmrc is like this:
 
