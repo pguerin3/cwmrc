@@ -83,7 +83,7 @@ compton&
 
 ### Fish configuration file
 
-The .config/fish/config.fish file is like this:
+The ~/.config/fish/config.fish file is like this:
 ```
 export LESS_TERMCAP_mb=(printf '\e[01;31m') # enter blinking mode - red
 export LESS_TERMCAP_md=(printf '\e[01;35m') # enter double-bright mode - bold, magenta
