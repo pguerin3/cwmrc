@@ -6,6 +6,9 @@ This repository showcases screenshots of the Calm Window Manager (CWM)
 [CWM](https://github.com/leahneukirchen/cwm)
 
 CWM is a floating window manager, that can also do tiling.
+
+There is also a built-in application launcher.
+
 However, as CWM is extremely minimalistic, other applications are used to obtain extra bling.
 
 
@@ -23,6 +26,11 @@ However, as CWM is extremely minimalistic, other applications are used to obtain
 
 ![](images/VirtualBox8.png)
 ![](images/VirtualBox9.png)
+
+## Screenshots with application launcher
+
+![](images/VirtualBox10.png)
+![](images/VirtualBox11.png)
 
 
 ## Installation of CWM
