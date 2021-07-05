@@ -9,7 +9,7 @@ CWM is a floating window manager, that can also do tiling.
 However, as CWM is extremely minimalistic, other applications are used to obtain extra bling.
 
 
-## Screenshots of CWM
+## Screenshots of floating windows
 
 ![](images/VirtualBox1.png)
 ![](images/VirtualBox2.png)
@@ -18,6 +18,9 @@ However, as CWM is extremely minimalistic, other applications are used to obtain
 ![](images/VirtualBox5.png)
 ![](images/VirtualBox6.png)
 ![](images/VirtualBox7.png)
+
+## Screenshots of tiled windows
+
 ![](images/VirtualBox8.png)
 ![](images/VirtualBox9.png)
 
