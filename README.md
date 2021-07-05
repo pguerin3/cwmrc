@@ -19,6 +19,7 @@ However, as CWM is extremely minimalistic, other applications are used to obtain
 ![](images/VirtualBox6.png)
 ![](images/VirtualBox7.png)
 ![](images/VirtualBox8.png)
+![](images/VirtualBox9.png)
 
 
 ## Installation of CWM
