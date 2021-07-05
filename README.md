@@ -5,6 +5,7 @@ This repository showcases screenshots of the Calm Window Manager (CWM)
 
 [CWM](https://github.com/leahneukirchen/cwm)
 
+CWM is a floating window manager, that can also do tiling.
 However, as CWM is extremely minimalistic, other applications are used to obtain extra bling.
 
 
@@ -77,10 +78,13 @@ fontname fixed-13
 
 moveamount 10	# granularity of finest movement
 vtile 60
+htile 60
 gap 5 5 5 5
+color inactiveborder black
 
 bind-key CM-Return	"urxvt"
 bind-key CM-minus	window-vtile
+bind-key CMS-minus	window-htile
 
 # applications
 command xscreensaver	"xscreensaver"
