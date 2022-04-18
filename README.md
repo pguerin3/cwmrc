@@ -7,9 +7,18 @@ This repository showcases screenshots of the Calm Window Manager (CWM)
 
 CWM is a floating window manager, that can also do tiling.
 
-There is also a built-in application launcher.
+There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
 
-However, as CWM is extremely minimalistic, other applications are used to obtain extra bling.
+## Screenshots of floating windows that are tiled windows
+
+![](images/VirtualBox8.png)
+![](images/VirtualBox9.png)
+
+
+## Screenshots with application launcher
+
+![](images/VirtualBox10.png)
+![](images/VirtualBox11.png)
 
 
 ## Screenshots of floating windows
@@ -21,18 +30,6 @@ However, as CWM is extremely minimalistic, other applications are used to obtain
 ![](images/VirtualBox5.png)
 ![](images/VirtualBox6.png)
 ![](images/VirtualBox7.png)
-
-
-## Screenshots of tiled windows
-
-![](images/VirtualBox8.png)
-![](images/VirtualBox9.png)
-
-
-## Screenshots with application launcher
-
-![](images/VirtualBox10.png)
-![](images/VirtualBox11.png)
 
 
 ## Installation of CWM
@@ -62,9 +59,9 @@ Use of other packages can be seen in the screenshots, and they are:
 # dnf install fish chrome rxvt-unicode exa feh
 ```
 
-Transparency in the terminal is performed by Compton:
+Transparency in the terminal is performed by Compton or Picom:
 ```
-# dnf install compton
+# dnf install picom
 ```
 
 
@@ -132,4 +129,20 @@ command urxvt-bkdarkblue	"urxvt +sb -depth 32 -bg rgba:0000/0000/3333/aaaa -fg [
 note 1 - as urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
 note 2 - the +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
 
+
+### shutdown, reboot, and suspend
+
+As systemd is used, managing the host can be achieved with the following commands:
+
+```
+systemctl suspend
+```
+
+```
+systemctl reboot
+```
+
+```
+systemctl poweroff
+```
 
