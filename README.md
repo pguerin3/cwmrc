@@ -14,7 +14,7 @@ CWM is a floating window manager, and if configured correctly can:
 There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
 
 
-## Screenshots of floating windows that are tiled windows
+## Screenshots of floating windows that are tiled
 
 To create a few terminal windows, use alt+cntrl+enter for each terminal.
 Then alt+cntrl+minus to tile.
