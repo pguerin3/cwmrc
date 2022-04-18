@@ -9,13 +9,26 @@ CWM is a floating window manager, that can also do tiling.
 
 There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
 
+
 ## Screenshots of floating windows that are tiled windows
+
+### Windows and Tiles
+
+To create a few terminal windows, use alt-cntrl-enter for each terminal.
+Then alt-cntrl-minus to tile.
 
 ![](images/VirtualBox8.png)
 ![](images/VirtualBox9.png)
 
 
 ## Screenshots with application launcher
+
+The application laucher can be run with a mouse click.
+Or you may run applications from the command line.
+
+```
+chromium-browser&
+```
 
 ![](images/VirtualBox10.png)
 ![](images/VirtualBox11.png)
@@ -129,8 +142,7 @@ command urxvt-bkdarkblue	"urxvt +sb -depth 32 -bg rgba:0000/0000/3333/aaaa -fg [
 note 1 - as urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
 note 2 - the +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
 
-
-### shutdown, reboot, and suspend
+### Shutdown, Reboot, and Suspend
 
 As systemd is used, managing the host can be achieved with the following commands:
 
