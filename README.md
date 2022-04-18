@@ -22,6 +22,8 @@ Then alt+cntrl+minus to tile.
 ![](images/VirtualBox8.png)
 ![](images/VirtualBox9.png)
 
+Then in the tiled layout, to switch the active window (in the non-primary) with the primary position - simply alt-cntrl-minus again.
+
 
 ## Screenshots with the native application launcher
 
