@@ -13,6 +13,8 @@ CWM is a floating window manager, and if configured correctly can:
 
 There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
 
+As CWM doesn't feature multi-monitor support, the ideal use-case is that you are just using a sigle monitor.
+
 
 ## Screenshots of floating windows that are tiled
 
