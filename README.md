@@ -47,6 +47,8 @@ chromium-browser&
 ![](images/VirtualBox7.png)
 
 
+# Mods to X11
+
 ## Enhance the touchpad
 If you are using a laptop, then the touchpad may not have full functionality.
 For example, a drag selection is possible, but a double-tap selection is not.
@@ -75,7 +77,7 @@ EndSection
 ```
 
 
-## Installation of CWM
+# Installation of CWM
 
 Most Linux distributions have the CWM in their repository.
 So installing CWM is extremely easy.
@@ -89,8 +91,53 @@ FreeBSD also has CWM in their repository, and is installed as follows:
 # pkg install cwm
 ```
 
+## CWM configuration file
 
-## Other packages used
+The ~/.cwmrc is similar to this:
+
+```
+# these fonts are for the menu
+#fontname "sans-serif:pixelsize=16"
+#fontname "monospace:pixelsize=15"
+#fontname "dejavu sans mono:size=7"
+fontname fixed-13
+
+vtile 50
+htile 50
+gap 0 0 0 0
+color activeborder red
+color inactiveborder black
+snapdist 3
+
+unbind-mouse all
+
+bind-key CM-Return	kitty
+bind-key CM-minus	window-vtile
+bind-key CMS-minus	window-htile
+
+autogroup 1 kitty,kitty
+autogroup 2 urxvt,URxvt
+autogroup 3 gvim,Gvim
+autogroup 4 chromium-browser,Chromium-browser
+autogroup 5 pcmanfm,Pcmanfm
+
+bind-key M-1 group-toggle-1
+bind-key M-2 group-toggle-2
+bind-key M-3 group-toggle-3
+bind-key M-4 group-toggle-4
+bind-key M-5 group-toggle-5
+bind-key M-6 group-toggle-6
+bind-key M-7 group-toggle-7
+bind-key M-0 group-toggle-all
+
+#command urxvt-bkblack	"urxvt +sb -depth 32 -bg rgba:0000/0000/0000/aaaa -fg [100]grey -fn xft:monospace:pixelsize=12 -geometry 132x50 +ssr"
+```
+
+note 1 - as urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
+note 2 - the +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
+
+
+# Install other packages
 
 Use of other packages can be seen in the screenshots, and they are:
  + fish shell - has syntax highlighting
@@ -167,56 +214,6 @@ export LESS_TERMCAP_us=(printf '\e[04;36m') # enter underline mode - cyan
 
 Note - same as bash except the $ is removed
 
-
-### Neovim configuration file
-
-
-
-
-### CWM configuration file
-
-The ~/.cwmrc is similar to this:
-
-```
-# these fonts are for the menu
-#fontname "sans-serif:pixelsize=16"
-#fontname "monospace:pixelsize=15"
-#fontname "dejavu sans mono:size=7"
-fontname fixed-13
-
-vtile 50
-htile 50
-gap 0 0 0 0
-color activeborder red
-color inactiveborder black
-snapdist 3
-
-unbind-mouse all
-
-bind-key CM-Return	kitty
-bind-key CM-minus	window-vtile
-bind-key CMS-minus	window-htile
-
-autogroup 1 kitty,kitty
-autogroup 2 urxvt,URxvt
-autogroup 3 gvim,Gvim
-autogroup 4 chromium-browser,Chromium-browser
-autogroup 5 pcmanfm,Pcmanfm
-
-bind-key M-1 group-toggle-1
-bind-key M-2 group-toggle-2
-bind-key M-3 group-toggle-3
-bind-key M-4 group-toggle-4
-bind-key M-5 group-toggle-5
-bind-key M-6 group-toggle-6
-bind-key M-7 group-toggle-7
-bind-key M-0 group-toggle-all
-
-#command urxvt-bkblack	"urxvt +sb -depth 32 -bg rgba:0000/0000/0000/aaaa -fg [100]grey -fn xft:monospace:pixelsize=12 -geometry 132x50 +ssr"
-```
-
-note 1 - as urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
-note 2 - the +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
 
 ### X11 startup configuration
 Can use ~/.initrc to call the applications
