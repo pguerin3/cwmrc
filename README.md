@@ -1,11 +1,15 @@
 
-# The Calm Window Manager (CWM) configuration
+# The Calm Window Manager (CWM) - floats and tiles
 
-This repository showcases screenshots of the Calm Window Manager (CWM)
+This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
-[CWM](https://github.com/leahneukirchen/cwm)
+[https://github.com/leahneukirchen/cwm](https://github.com/leahneukirchen/cwm)
 
-CWM is a floating window manager, that can also do tiling.
+CWM is a floating window manager, and if configured correctly can:
+* snap the floating windows into a tiling configuration.
+* support 3rd-party status bars. eg Polybar.
+* minimise the use of the mouse or touchpad. eg use the keyboard to launch applications.
+
 
 There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
 
@@ -19,18 +23,18 @@ Then alt+cntrl+minus to tile.
 ![](images/VirtualBox9.png)
 
 
-## Screenshots with application launcher
+## Screenshots with the native application launcher
 
 The application laucher can be run with a mouse click.
+
+![](images/VirtualBox10.png)
+![](images/VirtualBox11.png)
+
 Or you may run applications from the command line.
 
 ```
 chromium-browser&
 ```
-
-![](images/VirtualBox10.png)
-![](images/VirtualBox11.png)
-
 
 ## Screenshots of floating windows
 
@@ -62,7 +66,7 @@ Create the file: /etc/X11/xorg.conf.d/20-intel.conf
 Section "Device"
 	Identifier	"Intel Graphics"
 	Driver		"intel"
-	# stop the tearing
+	# stop screen tearing
 	Option "TearFree" "true"
 	Option "TripleBuffer" "true"
 	# stop screen freezing
@@ -74,7 +78,8 @@ EndSection
 ## Installation of CWM
 
 Most Linux distributions have the CWM in their repository.
-So installing CWM is extremely easy. For example:
+So installing CWM is extremely easy.
+For example, to install in Fedora:
 ```
 # dnf install cwm 
 ```
@@ -147,15 +152,6 @@ URxvt.font: xft:monospace:pixelsize=12
 URxvt.geometry: 132x50
 ```
 
-### Bash configuration file
-
-The ~/.bash_profile file is like this:
-```
-feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/wallpapers-master&
-compton&
-```
-
-
 ### Fish configuration file
 
 The ~/.config/fish/config.fish file is like this:
@@ -206,8 +202,6 @@ autogroup 2 urxvt,URxvt
 autogroup 3 gvim,Gvim
 autogroup 4 chromium-browser,Chromium-browser
 autogroup 5 pcmanfm,Pcmanfm
-autogroup 6 "VirtualBox Manager, VirtualBox Manager"
-autogroup 7 "VirtualBox Machine, VirtualBox Machine"
 
 bind-key M-1 group-toggle-1
 bind-key M-2 group-toggle-2
@@ -229,6 +223,7 @@ Can use ~/.initrc to call the applications
 ```
 xrandr --output VGA-0 --auto
 feh --no-fehbg --bg-fill ~/Downloads/467642.jpg&
+#feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/wallpapers-master&
 picom&
 polybar example&
 exec cwm
