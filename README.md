@@ -1,6 +1,8 @@
 
 # The Calm Window Manager (CWM) - a floating window manager that also tiles
 
+***** still a work-in-progress *****
+
 This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
 [https://github.com/leahneukirchen/cwm](https://github.com/leahneukirchen/cwm)
