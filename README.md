@@ -8,9 +8,10 @@ This repository showcases configuration of the Calm Window Manager (CWM) to keep
 [https://github.com/leahneukirchen/cwm](https://github.com/leahneukirchen/cwm)
 
 CWM is a floating window manager, and if configured correctly can:
-* snap the floating windows into a tiling configuration.
-* support 3rd-party status bars. eg Polybar.
-* minimise the use of the mouse or touchpad. eg use the keyboard to launch applications.
+ * floats windows by default.
+ * snap the floating windows into a tiling configuration.
+ * support 3rd-party status bars. eg Polybar.
+ * minimise the use of the mouse or touchpad. eg use the keyboard to launch applications.
 
 
 There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
@@ -18,15 +19,31 @@ There is also a built-in application launcher, but also it's easy to add 3rd-par
 As CWM doesn't feature multi-monitor support, the ideal use-case is that you are just using a sigle monitor.
 
 
-## Screenshots of floating windows that are tiled
+## Screenshots of floating windows that are snapped into tiles
 
 To create a few terminal windows, use alt+cntrl+enter for each terminal.
 Then alt+cntrl+minus to tile.
 
-![](images/VirtualBox8.png)
-![](images/VirtualBox9.png)
+Without a Polybar:
+
+![](images/'VirtualBox_Fedora 35_23_04_2022_18_33_47.png')
+
+With a Polybar:
+
+![](images/'VirtualBox_Fedora 35_23_04_2022_18_14_56.png')
 
 Then in the tiled layout, to switch the active window (in the non-primary) with the primary position - simply alt-cntrl-minus again.
+
+
+## Screenshots of floating windows (without tiling)
+
+![](images/VirtualBox1.png)
+![](images/VirtualBox2.png)
+![](images/VirtualBox3.png)
+![](images/VirtualBox4.png)
+![](images/VirtualBox5.png)
+![](images/VirtualBox6.png)
+![](images/VirtualBox7.png)
 
 
 ## Screenshots with the native application launcher
@@ -41,17 +58,6 @@ Or you may run applications from the command line.
 ```
 chromium-browser&
 ```
-
-## Screenshots of floating windows
-
-![](images/VirtualBox1.png)
-![](images/VirtualBox2.png)
-![](images/VirtualBox3.png)
-![](images/VirtualBox4.png)
-![](images/VirtualBox5.png)
-![](images/VirtualBox6.png)
-![](images/VirtualBox7.png)
-
 
 # Mods to X11
 
