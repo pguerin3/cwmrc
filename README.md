@@ -26,11 +26,11 @@ Then alt+cntrl+minus to tile.
 
 Without a Polybar:
 
-![](images/'VirtualBox_Fedora 35_23_04_2022_18_33_47.png')
+![](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
 
 With a Polybar:
 
-![](images/'VirtualBox_Fedora 35_23_04_2022_18_14_56.png')
+![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
 
 Then in the tiled layout, to switch the active window (in the non-primary) with the primary position - simply alt-cntrl-minus again.
 
