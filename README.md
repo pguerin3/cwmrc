@@ -40,7 +40,7 @@ Use alt+cntrl+enter to create another terminal.
 ![](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
 
 
-Then alt+cntrl+minus to tile the 4 windows.
+Then alt+cntrl+minus to tile the 4 windows with the focused window placed in the master position.
 
 ![](images/VirtualBox_Fedora35_23_04_2022_21_10_51.png)
 
