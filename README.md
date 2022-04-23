@@ -10,8 +10,9 @@ This repository showcases configuration of the Calm Window Manager (CWM) to keep
 CWM is a floating window manager, and if configured correctly can:
  * floats windows by default.
  * snap the floating windows into a tiling configuration.
- * support 3rd-party status bars. eg Polybar.
+ * snapped windows can have gaps between the windows.
  * minimise the use of the mouse or touchpad. eg use the keyboard to launch applications.
+ Also add 3rd-party status bars. eg Polybar.
 
 
 There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
@@ -24,11 +25,11 @@ As CWM doesn't feature multi-monitor support, the ideal use-case is that you are
 To create a few terminal windows, use alt+cntrl+enter for each terminal.
 Then alt+cntrl+minus to tile.
 
-Without a Polybar:
+### Without a Polybar:
 
 ![](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
 
-With a Polybar:
+### With a Polybar:
 
 ![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
 
@@ -105,13 +106,10 @@ FreeBSD also has CWM in their repository, and is installed as follows:
 
 ## CWM configuration file
 
-The ~/.cwmrc is similar to this:
+The ~/.cwmrc used in the screen shots is similar to this:
 
 ```
 # these fonts are for the menu
-#fontname "sans-serif:pixelsize=16"
-#fontname "monospace:pixelsize=15"
-#fontname "dejavu sans mono:size=7"
 fontname fixed-13
 
 vtile 50
@@ -120,12 +118,6 @@ gap 0 0 0 0
 color activeborder red
 color inactiveborder black
 snapdist 3
-
-unbind-mouse all
-
-bind-key CM-Return	kitty
-bind-key CM-minus	window-vtile
-bind-key CMS-minus	window-htile
 
 autogroup 1 kitty,kitty
 autogroup 2 urxvt,URxvt
@@ -142,11 +134,14 @@ bind-key M-6 group-toggle-6
 bind-key M-7 group-toggle-7
 bind-key M-0 group-toggle-all
 
-#command urxvt-bkblack	"urxvt +sb -depth 32 -bg rgba:0000/0000/0000/aaaa -fg [100]grey -fn xft:monospace:pixelsize=12 -geometry 132x50 +ssr"
-```
+bind-key CM-Return	kitty
+bind-key CM-minus	window-vtile
+bind-key CMS-minus	window-htile
 
-note 1 - as urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
-note 2 - the +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
+ignore polybar
+
+command urxvt	"urxvt"
+```
 
 
 # Install other packages
@@ -210,6 +205,9 @@ URxvt.foreground: [100]grey
 URxvt.font: xft:monospace:pixelsize=12
 URxvt.geometry: 132x50
 ```
+
+note 1 - as urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
+note 2 - the +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
 
 ### Fish configuration file
 
