@@ -46,12 +46,6 @@ Then alt+cntrl+minus to tile the 4 windows with the focused window placed in the
 
 
 
-### With a Polybar (top right corner):
-
-![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
-
-
-
 ## Screenshots of floating windows (without tiling)
 
 ![](images/VirtualBox1.png)
@@ -221,6 +215,12 @@ font-0 = fixed:pixelsize=10;1
 font-1 = NotoColorEmoji:fontformat=truetype:scale=8;0
 font-2 = siji:pixelsize=10;1
 ```
+
+### Tiled windows with a Polybar (top right corner):
+
+![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
+
+
 
 
 ## Other applications
