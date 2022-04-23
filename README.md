@@ -61,34 +61,6 @@ Or you may run applications from the command line. For example:
 chromium-browser&
 ```
 
-# Mods to X11
-
-## Enhance the touchpad
-If you are using a laptop, then the touchpad may not have full functionality.
-For example, a drag selection is possible, but a double-tap selection is not.
-So to enable a double-tap selection, create the following file: /etc/X11/xorg.conf.d/10-touchpad.conf
-```
-Section "InputClass"
-	Identifier "tap-by-default"
-	Driver "libinput"
-	Option "Tapping" "on"
-EndSection
-```
-
-## Rectify any screen tearing and freezing
-If you are experiencing screen tearing and freezing for the Intel GPU that you're using then try the following.
-Create the file: /etc/X11/xorg.conf.d/20-intel.conf
-```
-Section "Device"
-	Identifier	"Intel Graphics"
-	Driver		"intel"
-	# stop screen tearing
-	Option "TearFree" "true"
-	Option "TripleBuffer" "true"
-	# stop screen freezing
-	Option "DRI" "2"
-EndSection
-```
 
 
 # Installation of CWM
@@ -243,7 +215,7 @@ Use of other packages can be seen in the screenshots, and they are:
 ```
 
 
-## X11 startup configuration
+## X11 configurations
 Can use ~/.initrc to call the applications
 ```
 xrandr --output VGA-0 --auto
@@ -253,6 +225,34 @@ picom&
 polybar example&
 exec cwm
 ```
+
+### Enhance the touchpad
+If you are using a laptop, then the touchpad may not have full functionality.
+For example, a drag selection is possible, but a double-tap selection is not.
+So to enable a double-tap selection, create the following file: /etc/X11/xorg.conf.d/10-touchpad.conf
+```
+Section "InputClass"
+	Identifier "tap-by-default"
+	Driver "libinput"
+	Option "Tapping" "on"
+EndSection
+```
+
+### Rectify any screen tearing and freezing
+If you are experiencing screen tearing and freezing for the Intel GPU that you're using then try the following.
+Create the file: /etc/X11/xorg.conf.d/20-intel.conf
+```
+Section "Device"
+	Identifier	"Intel Graphics"
+	Driver		"intel"
+	# stop screen tearing
+	Option "TearFree" "true"
+	Option "TripleBuffer" "true"
+	# stop screen freezing
+	Option "DRI" "2"
+EndSection
+```
+
 
 ## Shutdown, Reboot, and Suspend
 
