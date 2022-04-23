@@ -1,5 +1,5 @@
 
-# The Calm Window Manager (CWM) - a floating window manager that also tiles
+# The Calm Window Manager (CWM) - a minimalist floating window manager that also tiles
 
 ***** still a work-in-progress *****
 
@@ -8,11 +8,12 @@ This repository showcases configuration of the Calm Window Manager (CWM) to keep
 [https://github.com/leahneukirchen/cwm](https://github.com/leahneukirchen/cwm)
 
 CWM is a floating window manager, and if configured correctly can:
- * floats windows by default.
- * snap the floating windows into a tiling configuration.
+ * float windows by default.
+ * snap the floating windows into a tiling configuration. eg either horizontal master/stack, or vertical master/stack.
  * snapped windows can have gaps between the windows.
  * minimise the use of the mouse or touchpad. eg use the keyboard to launch applications.
- Also add 3rd-party status bars. eg Polybar.
+
+Also add 3rd-party status bars. eg Polybar.
 
 
 There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
@@ -29,7 +30,7 @@ Then alt+cntrl+minus to tile.
 
 ![](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
 
-### With a Polybar:
+### With a Polybar (top right corner):
 
 ![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
 
@@ -54,7 +55,7 @@ The application laucher can be run with a mouse click.
 ![](images/VirtualBox10.png)
 ![](images/VirtualBox11.png)
 
-Or you may run applications from the command line.
+Or you may run applications from the command line. For example:
 
 ```
 chromium-browser&
@@ -144,56 +145,12 @@ command urxvt	"urxvt"
 ```
 
 
-# Install other packages
+# Install applications
 
-Use of other packages can be seen in the screenshots, and they are:
- + fish shell - has syntax highlighting
- + chromium browser
- + urxvt terminal
- + kitty terminal
- + exa - a modern replacement for ls
- + feh wallpaper launcher
- + xclip - copy between the clipboard and the primary selection
- + git
- + sysstat - for the sar utility
-
+## Urxvt terminal configuration file
 ```
-# dnf install fish chromium rxvt-unicode exa feh xclip neovim vim-X11 git sysstat 
+# dnf install rxvt-unicode 
 ```
-
-Transparency in the terminal is performed by Compton or Picom:
-```
-# dnf install picom
-```
-
-Status bar can be provided by Polybar:
-```
-# dnf install polybar
-```
-There is an example config file installed by default: /usr/share/doc/polybar/config
-However this file can be copied to your home, and then installed in: ~/.config/polybar/config
-Also you may need to install the right font (eg siji) for the Polybar config file.
-
-
-## Configuration files
-
-### Kitty configuration file
-Kitty can create a default configuration file in ~/.config/kitty/kitty.conf.
-(auto install the kitty.conf by using ctrl+shft+f2)
-Then you can add deviations to the head of the file similar to as follows:
-```
-remember_window_size yes
-hide_window_decorations yes
-background_opacity 0.7
-dynamic_background_opacity yes
-scrollback_fill_enlarged_window yes
-focus_follows_mouse yes
-font_size 9
-enable_audio_bell no
-visual_bell_duration 0.1
-```
-
-### urxvt terminal configuration file
 Create a ~/.Xdefaults file for the configuration of the urxvt terminal.
 Place the following configuration in it:
 ```
@@ -209,7 +166,32 @@ URxvt.geometry: 132x50
 note 1 - as urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
 note 2 - the +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
 
-### Fish configuration file
+
+## The Kitty terminal
+Kitty can create a default configuration file in ~/.config/kitty/kitty.conf.
+(auto install the kitty.conf by using ctrl+shft+f2)
+Or you can maually create a configuration file yourself.
+
+Then you can add deviations to the head of the file similar to as follows:
+```
+remember_window_size yes
+hide_window_decorations yes
+background_opacity 0.7
+dynamic_background_opacity yes
+scrollback_fill_enlarged_window yes
+focus_follows_mouse yes
+font_size 9
+enable_audio_bell no
+visual_bell_duration 0.1
+```
+
+
+## The Fish stell
+The Fish shell has syntax highlighting. Install the Fish shell as follows:
+
+```
+# dnf install fish 
+```
 
 The ~/.config/fish/config.fish file is like this:
 ```
@@ -222,10 +204,46 @@ export LESS_TERMCAP_ue=(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=(printf '\e[04;36m') # enter underline mode - cyan
 ```
 
-Note - same as bash except the $ is removed
+Note - same what may be found in a Bash configuration file except the $ is removed.
 
 
-### X11 startup configuration
+## Window transparency with Picom
+
+Transparency in the terminal is performed by either Compton or Picom:
+
+```
+# dnf install picom
+```
+
+
+## Status bar with Polybar
+
+Status bar can be provided by Polybar:
+```
+# dnf install polybar
+```
+There is an example config file installed by default: /usr/share/doc/polybar/config
+However this file can be copied to your home, and then installed in: ~/.config/polybar/config
+Also you may need to install the right font (eg siji) for the Polybar config file.
+
+
+
+## Other applications
+
+Use of other packages can be seen in the screenshots, and they are:
+ + chromium browser
+ + exa - a modern replacement for ls
+ + feh wallpaper launcher
+ + xclip - copy between the clipboard and the primary selection
+ + git
+ + sysstat - for the sar utility
+
+```
+# dnf install chromium exa feh xclip neovim vim-X11 git sysstat 
+```
+
+
+## X11 startup configuration
 Can use ~/.initrc to call the applications
 ```
 xrandr --output VGA-0 --auto
@@ -236,7 +254,7 @@ polybar example&
 exec cwm
 ```
 
-### Shutdown, Reboot, and Suspend
+## Shutdown, Reboot, and Suspend
 
 As systemd is used, managing the host can be achieved with the following commands:
 
