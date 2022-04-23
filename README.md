@@ -197,10 +197,15 @@ There is an example config file installed by default: /usr/share/doc/polybar/con
 
 However this file can be copied to: ~/.config/polybar/config.ini
 
-You'll need to edit the file to remove any components do don't want to use.
+You'll need to edit the file to remove any components that you don't want to use.
 
-Also you may need to install the right font (eg siji) for the Polybar config file, and then ensure the config.ini refers to it.
-
+Also you may need to install the right fonts (eg siji, and NotoColorEmoji) for the Polybar config file, and then ensure the config.ini refers to it.
+```
+font-0 = fixed:pixelsize=10;1
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-1 = NotoColorEmoji:fontformat=truetype:scale=8;0
+font-2 = siji:pixelsize=10;1
+```
 
 
 ## Other applications
