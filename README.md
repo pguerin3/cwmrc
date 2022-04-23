@@ -194,8 +194,12 @@ Status bar can be provided by Polybar:
 # dnf install polybar
 ```
 There is an example config file installed by default: /usr/share/doc/polybar/config
-However this file can be copied to your home, and then installed in: ~/.config/polybar/config.ini
-Also you may need to install the right font (eg siji) for the Polybar config file.
+
+However this file can be copied to: ~/.config/polybar/config.ini
+
+You'll need to edit the file to remove any components do don't want to use.
+
+Also you may need to install the right font (eg siji) for the Polybar config file, and then ensure the config.ini refers to it.
 
 
 
