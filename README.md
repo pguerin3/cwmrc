@@ -24,17 +24,32 @@ As CWM doesn't feature multi-monitor support, the ideal use-case is that you are
 ## Screenshots of floating windows that are snapped into tiles
 
 To create a few terminal windows, use alt+cntrl+enter for each terminal.
-Then alt+cntrl+minus to tile.
+
+For example, 4 windows.
+
+Then alt+cntrl+minus to tile the 4 windows.
+
+Then in the tiled layout, to switch the active window (in the non-primary) with the primary position - simply alt-cntrl-minus again.
 
 ### Without a Polybar:
 
 ![](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
 
+Use alt+cntrl+enter to create another terminal.
+
+![](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
+
+
+Then alt+cntrl+minus to tile the 4 windows.
+
+![](images/VirtualBox_Fedora35_23_04_2022_21_10_51.png)
+
+
+
 ### With a Polybar (top right corner):
 
 ![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
 
-Then in the tiled layout, to switch the active window (in the non-primary) with the primary position - simply alt-cntrl-minus again.
 
 
 ## Screenshots of floating windows (without tiling)
