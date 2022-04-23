@@ -77,9 +77,7 @@ FreeBSD also has CWM in their repository, and is installed as follows:
 # pkg install cwm
 ```
 
-## CWM configuration file
-
-The ~/.cwmrc used in the screen shots is similar to this:
+The ~/.cwmrc configuration file used in the screen shots is similar to this:
 
 ```
 # these fonts are for the menu
@@ -113,6 +111,7 @@ bind-key CMS-minus	window-htile
 
 ignore polybar
 
+# for the native application menu
 command urxvt	"urxvt"
 ```
 
@@ -158,7 +157,7 @@ visual_bell_duration 0.1
 ```
 
 
-## The Fish stell
+## The Fish shell
 The Fish shell has syntax highlighting. Install the Fish shell as follows:
 
 ```
@@ -195,7 +194,7 @@ Status bar can be provided by Polybar:
 # dnf install polybar
 ```
 There is an example config file installed by default: /usr/share/doc/polybar/config
-However this file can be copied to your home, and then installed in: ~/.config/polybar/config
+However this file can be copied to your home, and then installed in: ~/.config/polybar/config.ini
 Also you may need to install the right font (eg siji) for the Polybar config file.
 
 
