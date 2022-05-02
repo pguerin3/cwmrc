@@ -9,14 +9,13 @@ This repository showcases configuration of the Calm Window Manager (CWM) to keep
 
 CWM is a floating window manager, and if configured correctly can:
  * float windows by default.
+ * snap any window into a corner, or edge of the screen.
  * snap the floating windows into a tiling configuration. eg either horizontal master/stack, or vertical master/stack.
  * snapped windows can have gaps between the windows.
- * minimise the use of the mouse or touchpad. eg use the keyboard to launch applications.
 
-Also add 3rd-party status bars. eg Polybar.
+Also there is a native way to launch applications with the mouse or touchpad, although this is not required. eg use the keyboard to launch applications.
 
-
-There is also a built-in application launcher, but also it's easy to add 3rd-party lanchers and status bars.
+But also it's easy to add 3rd-party lanchers and status bars. eg Polybar.
 
 As CWM doesn't feature multi-monitor support, the ideal use-case is that you are just using a sigle monitor.
 
@@ -37,14 +36,15 @@ Then in the tiled layout, to switch the active window (in the non-primary) with 
 
 Use alt+cntrl+enter to create another terminal.
 
-It will float on top of the others for a total of 5 windows.
+It will float on top of the 4 other windows for a total of 5 windows.
 
 ![](images/VirtualBox_Fedora35_23_04_2022_21_10_02.png)
 
-Then alt+cntrl+minus to restacck the 5 windows into the tiled layout with the focused window placed in the master position.
+Then alt+cntrl+minus to restacck the 5 windows into the tiled layout with the focused window placed in the master position on the left.
 
 ![](images/VirtualBox_Fedora35_23_04_2022_21_10_51.png)
 
+So now 4 windows have been snapped into the stack on the right, and the focused window at that time was snapped into the master position on the left.
 
 
 ## Screenshots of floating windows (without tiling)
