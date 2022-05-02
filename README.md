@@ -1,7 +1,7 @@
 
 # The Calm Window Manager (CWM) - a minimalist floating window manager that also tiles
 
-***** still a work-in-progress *****
+## ***** still a work-in-progress *****
 
 This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
@@ -37,7 +37,7 @@ Then in the tiled layout, to switch the active window (in the non-primary) with 
 
 Use alt+cntrl+enter to create another terminal.
 
-![](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
+![](images/VirtualBox_Fedora35_23_04_2022_21_10_02.png)
 
 
 Then alt+cntrl+minus to tile the 4 windows with the focused window placed in the master position.
