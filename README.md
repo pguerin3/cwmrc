@@ -231,7 +231,7 @@ You'll need to edit the file to remove any components that you don't want to use
 For Fedora, you may need to install the right fonts (eg siji, and NotoColorEmoji) for the Polybar config file.
 Also need the xset app for the siji font below:
 ```
-$ dnf install xset
+$ sudo dnf install xset
 ```
 Then follow the instructions to install the siji font:
 ```
@@ -255,6 +255,7 @@ Or place the above command in the CWM configuration file (shown below).
 
 ### Tiled windows with a Polybar (top right corner):
 
+An modified version of the example Polybar, with the bar at 50% of the screen width, is shown below:
 ![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
 
 
