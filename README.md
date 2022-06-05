@@ -40,32 +40,32 @@ Use alt+cntrl+enter to create another terminal.
 
 It will float on top of the 4 other windows for a total of 5 windows.
 
-![](images/VirtualBox_Fedora35_23_04_2022_21_10_02.png)
+![5 windows](images/VirtualBox_Fedora35_23_04_2022_21_10_02.png)
 
 Then alt+cntrl+minus to restacck the 5 windows into the tiled layout with the focused window placed in the master position on the left.
 
-![](images/VirtualBox_Fedora35_23_04_2022_21_10_51.png)
+![5 tiled windows](images/VirtualBox_Fedora35_23_04_2022_21_10_51.png)
 
 So now 4 windows have been snapped into the stack on the right, and the focused window at that time was snapped into the master position on the left.
 
 
 ## Screenshots of floating windows (without tiling)
 
-![screenshot](images/VirtualBox1.png)
-![](images/VirtualBox2.png)
-![](images/VirtualBox3.png)
-![](images/VirtualBox4.png)
-![](images/VirtualBox5.png)
-![](images/VirtualBox6.png)
-![](images/VirtualBox7.png)
+![screenshot1](images/VirtualBox1.png)
+![screenshot2](images/VirtualBox2.png)
+![screenshot3](images/VirtualBox3.png)
+![screenshot4](images/VirtualBox4.png)
+![screenshot5](images/VirtualBox5.png)
+![screenshot6](images/VirtualBox6.png)
+![screenshot7](images/VirtualBox7.png)
 
 
 ## Screenshots with the native application launcher
 
 The application laucher can be run with a mouse click.
 
-![screenshot](images/VirtualBox10.png)
-![](images/VirtualBox11.png)
+![native-luancher1](images/VirtualBox10.png)
+![native-luancher2](images/VirtualBox11.png)
 
 Or you may run applications from the command line. For example:
 
