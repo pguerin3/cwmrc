@@ -277,7 +277,7 @@ $ sudo dnf install chromium exa feh xclip neovim vim-X11 git sysstat
 
 
 ## X11 configurations
-Can use ~/.initrc to call the applications
+Can use ~/.initrc to start the default the applications, before starting CWM:
 ```
 xrandr --output VGA-0 --auto
 #feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/wallpapers-master&
