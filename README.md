@@ -70,7 +70,7 @@ The application laucher can be run with a mouse click.
 Or you may run applications from the command line. For example:
 
 ```
-chromium-browser&
+$ chromium-browser&
 ```
 
 
@@ -81,18 +81,18 @@ Most Linux distributions have the CWM in their repository.
 So installing CWM is extremely easy.
 For example, to install in Fedora:
 ```
-# dnf install cwm 
+$ sudo dnf install cwm 
 ```
 
 FreeBSD also has CWM in their repository, and is installed as follows:
 ```
-# pkg install cwm
+$ sudo pkg install cwm
 ```
 
 The ~/.cwmrc configuration file used in the screen shots is similar to this:
 
 ```
-# these fonts are for the menu
+# these fonts are for the application launcher menu
 fontname fixed-13
 
 vtile 50
@@ -129,11 +129,11 @@ command urxvt	"urxvt"
 
 Inspect the CWM manual for all the default key bindings:
 ```
-man cwm
+$ man cwm
 ```
 Then inspect the CWM configuration manual for the other possibilities for the ~/.cwmrc file:
 ```
-man cwmrc
+$ man cwmrc
 ```
 
 
@@ -141,7 +141,7 @@ man cwmrc
 
 ## Urxvt terminal configuration file
 ```
-# dnf install rxvt-unicode 
+$ sudo dnf install rxvt-unicode 
 ```
 Create a ~/.Xdefaults file for the configuration of the urxvt terminal.
 Place the following configuration in it:
@@ -182,7 +182,7 @@ visual_bell_duration 0.1
 The Fish shell has syntax highlighting. Install the Fish shell as follows:
 
 ```
-# dnf install fish 
+$ sudo dnf install fish 
 ```
 
 The ~/.config/fish/config.fish file is like this:
@@ -208,7 +208,7 @@ Note - same what may be found in a Bash configuration file except the $ is remov
 Transparency in the terminal is performed by either Compton or Picom:
 
 ```
-# dnf install picom
+$ sudo dnf install picom
 ```
 
 
@@ -216,14 +216,14 @@ Transparency in the terminal is performed by either Compton or Picom:
 
 Status bar can be provided by Polybar:
 ```
-# dnf install polybar
+$ sudo dnf install polybar
 ```
 In the Fedora repo there is an example config file installed by default: /usr/share/doc/polybar/examples/config.ini
 
 However this file can be copied to: ~/.config/polybar/config.ini
 ```
-mkdir ~/.config/polybar/
-cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config.ini
+$ mkdir ~/.config/polybar/
+$ cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config.ini
 ```
 
 You'll need to edit the file to remove any components that you don't want to use.
@@ -231,7 +231,7 @@ You'll need to edit the file to remove any components that you don't want to use
 For Fedora, you may need to install the right fonts (eg siji, and NotoColorEmoji) for the Polybar config file.
 Also need the xset app for the siji font below:
 ```
-dnf install xset
+$ dnf install xset
 ```
 Then follow the instructions to install the siji font:
 ```
@@ -248,9 +248,9 @@ font-2 = siji:pixelsize=10;1
 ```
 Then run the example bar with:
 ```
-polybar example&
+$ polybar example&
 ```
-Or place the above command in the CWM configuration file.
+Or place the above command in the CWM configuration file (shown below).
 
 
 ### Tiled windows with a Polybar (top right corner):
@@ -271,7 +271,7 @@ Use of other packages can be seen in the screenshots, and they are:
  + sysstat - for the sar utility
 
 ```
-# dnf install chromium exa feh xclip neovim vim-X11 git sysstat 
+$ sudo dnf install chromium exa feh xclip neovim vim-X11 git sysstat 
 ```
 
 
