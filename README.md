@@ -5,17 +5,19 @@
 
 This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
+The repo for CWM is here:
+
 [https://github.com/leahneukirchen/cwm](https://github.com/leahneukirchen/cwm)
 
-CWM is a floating window manager, and if configured correctly can:
+CWM is a minimalist floating window manager:
  * float windows by default.
  * snap any window into a corner, or edge of the screen.
  * snap the floating windows into a tiling configuration. eg either horizontal master/stack, or vertical master/stack.
- * snapped windows can have gaps between the windows.
+ * retain gaps between the windows and the edge of the screen.
 
-Also there is a native way to launch applications with the mouse or touchpad, although this is not required. eg use the keyboard to launch applications.
+Also there is also a native application launcher that you can drive with the mouse or touchpad. eg use the keyboard to launch applications.
 
-But also it's easy to add 3rd-party lanchers and status bars. eg Polybar.
+If the native application launcher is not to your liking, then it's easy to add 3rd-party lanchers and status bars. eg Polybar.
 
 As CWM doesn't feature multi-monitor support, the ideal use-case is that you are just using a sigle monitor.
 
@@ -32,7 +34,7 @@ Then alt+cntrl+minus to tile the 4 windows, into a master window on the left and
 
 Then in the tiled layout, to switch the active window (in the non-primary) with the primary position - simply alt-cntrl-minus again.
 
-![](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
+![4 tiled windows snapped with alt+cntrl+minus](images/VirtualBox_Fedora35_23_04_2022_18_33_47.png)
 
 Use alt+cntrl+enter to create another terminal.
 
@@ -49,7 +51,7 @@ So now 4 windows have been snapped into the stack on the right, and the focused 
 
 ## Screenshots of floating windows (without tiling)
 
-![](images/VirtualBox1.png)
+![screenshot](images/VirtualBox1.png)
 ![](images/VirtualBox2.png)
 ![](images/VirtualBox3.png)
 ![](images/VirtualBox4.png)
@@ -62,7 +64,7 @@ So now 4 windows have been snapped into the stack on the right, and the focused 
 
 The application laucher can be run with a mouse click.
 
-![](images/VirtualBox10.png)
+![screenshot](images/VirtualBox10.png)
 ![](images/VirtualBox11.png)
 
 Or you may run applications from the command line. For example:
@@ -125,6 +127,15 @@ ignore polybar
 command urxvt	"urxvt"
 ```
 
+Inspect the CWM manual for all the default key bindings:
+```
+man cwm
+```
+Then inspect the CWM configuration manual for the other possibilities for the ~/.cwmrc file:
+```
+man cwmrc
+```
+
 
 # Install applications
 
@@ -176,13 +187,17 @@ The Fish shell has syntax highlighting. Install the Fish shell as follows:
 
 The ~/.config/fish/config.fish file is like this:
 ```
-export LESS_TERMCAP_mb=(printf '\e[01;31m') # enter blinking mode - red
-export LESS_TERMCAP_md=(printf '\e[01;35m') # enter double-bright mode - bold, magenta
-export LESS_TERMCAP_me=(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
-export LESS_TERMCAP_se=(printf '\e[0m') # leave standout mode    
-export LESS_TERMCAP_so=(printf '\e[01;33m') # enter standout mode - yellow
-export LESS_TERMCAP_ue=(printf '\e[0m') # leave underline mode
-export LESS_TERMCAP_us=(printf '\e[04;36m') # enter underline mode - cyan
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    # add color to the less pager in Fish, not Bash does this differently using export.
+    set -gx LESS_TERMCAP_mb (printf '\e[01;31m') # enter blinking mode - red
+    set -gx LESS_TERMCAP_md (printf '\e[01;35m') # enter double-bright mode - bold, magenta
+    set -gx LESS_TERMCAP_me (printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
+    set -gx LESS_TERMCAP_se (printf '\e[0m') # leave standout mode
+    set -gx LESS_TERMCAP_so (printf '\e[01;33m') # enter standout mode - yellow
+    set -gx LESS_TERMCAP_ue (printf '\e[0m') # leave underline mode
+    set -gx LESS_TERMCAP_us (printf '\e[04;36m') # enter underline mode - cyan
+end
 ```
 
 Note - same what may be found in a Bash configuration file except the $ is removed.
@@ -203,19 +218,40 @@ Status bar can be provided by Polybar:
 ```
 # dnf install polybar
 ```
-There is an example config file installed by default: /usr/share/doc/polybar/config
+In the Fedora repo there is an example config file installed by default: /usr/share/doc/polybar/examples/config.ini
 
 However this file can be copied to: ~/.config/polybar/config.ini
+```
+mkdir ~/.config/polybar/
+cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config.ini
+```
 
 You'll need to edit the file to remove any components that you don't want to use.
 
-Also you may need to install the right fonts (eg siji, and NotoColorEmoji) for the Polybar config file, and then ensure the config.ini refers to it.
+For Fedora, you may need to install the right fonts (eg siji, and NotoColorEmoji) for the Polybar config file.
+Also need the xset app for the siji font below:
+```
+dnf install xset
+```
+Then follow the instructions to install the siji font:
+```
+https://github.com/stark/siji
+```
+
+Now ensure the Polybar config.ini file refers to the google-noto-emoji font:
 ```
 font-0 = fixed:pixelsize=10;1
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;then edit the font-1 line in the config look like this (uses the google-noto-emoji font)
 font-1 = NotoColorEmoji:fontformat=truetype:scale=8;0
 font-2 = siji:pixelsize=10;1
 ```
+Then run the example bar with:
+```
+polybar example&
+```
+Or place the above command in the CWM configuration file.
+
 
 ### Tiled windows with a Polybar (top right corner):
 
@@ -246,14 +282,15 @@ xrandr --output VGA-0 --auto
 feh --no-fehbg --bg-fill ~/Downloads/467642.jpg&
 #feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/wallpapers-master&
 picom&
-polybar example&
+#uncomment to execute by default
+#polybar example&
 exec cwm
 ```
 
 ### Enhance the touchpad
 If you are using a laptop, then the touchpad may not have full functionality.
 For example, a drag selection is possible, but a double-tap selection is not.
-So to enable a double-tap selection, create the following file: /etc/X11/xorg.conf.d/10-touchpad.conf
+So to enable a double-tap selection, create the following file as the root user: /etc/X11/xorg.conf.d/10-touchpad.conf
 ```
 Section "InputClass"
 	Identifier "tap-by-default"
@@ -264,7 +301,7 @@ EndSection
 
 ### Rectify any screen tearing and freezing
 If you are experiencing screen tearing and freezing for the Intel GPU that you're using then try the following.
-Create the file: /etc/X11/xorg.conf.d/20-intel.conf
+Create the following file as the root user: /etc/X11/xorg.conf.d/20-intel.conf
 ```
 Section "Device"
 	Identifier	"Intel Graphics"
