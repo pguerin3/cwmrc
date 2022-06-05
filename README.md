@@ -155,8 +155,8 @@ URxvt.font: xft:monospace:pixelsize=12
 URxvt.geometry: 132x50
 ```
 
-note 1 - as urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
-note 2 - the +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
+[^1]: As urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
+[^2]: The +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
 
 
 ## The Kitty terminal
