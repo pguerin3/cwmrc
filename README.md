@@ -198,6 +198,8 @@ if status is-interactive
     set -gx LESS_TERMCAP_ue (printf '\e[0m') # leave underline mode
     set -gx LESS_TERMCAP_us (printf '\e[04;36m') # enter underline mode - cyan
 end
+#Add your favourite keyboard layout here for X11 for X11
+setxkbmap -layout us -variant EngramMod
 ```
 
 Note - same what may be found in a Bash configuration file except the $ is removed.
