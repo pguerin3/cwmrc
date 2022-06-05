@@ -280,8 +280,8 @@ $ sudo dnf install chromium exa feh xclip neovim vim-X11 git sysstat
 Can use ~/.initrc to call the applications
 ```
 xrandr --output VGA-0 --auto
-feh --no-fehbg --bg-fill ~/Downloads/467642.jpg&
 #feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/wallpapers-master&
+feh --no-fehbg --bg-fill ~/usr/share/backgrounds/images/default-16_10.png&
 picom&
 #uncomment to execute by default
 #polybar example&
