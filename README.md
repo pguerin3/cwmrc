@@ -276,7 +276,7 @@ $ sudo dnf install chromium exa feh xclip neovim vim-X11 git sysstat
 ```
 
 
-## X11 configurations
+## X11 startx configuration
 Can use ~/.initrc to start the default the applications, before starting CWM:
 ```
 xrandr --output VGA-0 --auto
@@ -288,6 +288,13 @@ picom&
 #polybar example&
 exec cwm
 ```
+Now start the CWM with:
+```
+startx
+```
+
+
+## Optional - X11 configurations
 
 ### Enhance the touchpad
 If you are using a laptop, then the touchpad may not have full functionality.
