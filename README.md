@@ -256,6 +256,8 @@ $ polybar example&
 ```
 Or place the above command in the CWM configuration file (shown below).
 
+![](images/polybar-example_eDP1_001.png)
+
 
 ### Tiled windows with a Polybar (top right corner):
 
