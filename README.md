@@ -260,6 +260,8 @@ $ polybar example&
 ```
 Or place the above command in the CWM configuration file (shown below).
 
+Now the Polybar will look something like this:
+
 ![](images/polybar-example_eDP1_001.png)
 
 
