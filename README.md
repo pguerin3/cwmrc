@@ -5,7 +5,7 @@
 
 This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
-The repo for CWM is here:
+The official repo for CWM is here:
 
 [https://github.com/leahneukirchen/cwm](https://github.com/leahneukirchen/cwm)
 
@@ -19,7 +19,9 @@ Also there is also a native application launcher that you can drive with the mou
 
 If the native application launcher is not to your liking, then it's easy to add 3rd-party lanchers and status bars. eg Polybar.
 
-As CWM doesn't feature multi-monitor support, the ideal use-case is that you are just using a sigle monitor.
+As CWM doesn't feature multi-monitor support, the ideal use-case is that you are just using a single monitor.
+
+The install instructions below are for Fedora....
 
 
 ## Screenshots of floating windows that are snapped into tiles
@@ -235,7 +237,7 @@ Also need the xset app for the siji font below:
 ```
 $ sudo dnf install xset
 ```
-Then follow the instructions to install the siji font:
+Then follow the instructions in github to install the siji font:
 ```
 https://github.com/stark/siji
 ```
