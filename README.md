@@ -230,7 +230,11 @@ $ mkdir ~/.config/polybar/
 $ cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config.ini
 ```
 
-You'll need to edit the file to remove any components that you don't want to use.
+By default, this is what it looks like (need the prerequisite fonts installed - see below)
+
+![](images/polybar-example_eDP1_002.png)
+
+However, the bar is easy to customise to your liking, and edit the configuration file to remove any components that you don't want to use.
 
 For Fedora, you may need to install the right fonts (eg siji, and NotoColorEmoji) for the Polybar config file.
 Also need the xset app for the siji font below:
