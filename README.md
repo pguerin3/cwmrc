@@ -155,6 +155,7 @@ URxvt.background: rgba:0000/0000/0000/aaaa
 URxvt.foreground: [100]grey
 URxvt.font: xft:monospace:pixelsize=12
 URxvt.geometry: 132x50
+URxvt.visualBell: on
 ```
 
 As urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
