@@ -1,8 +1,6 @@
 
 # The Calm Window Manager (CWM) - a minimalist floating window manager that also tiles
 
-## ***** still a work-in-progress *****
-
 This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
 The official repo for CWM is here:
@@ -73,6 +71,10 @@ Or you may run applications from the command line. For example:
 
 ```
 $ chromium-browser&
+```
+or to ignore any run-time errors:
+```
+$ chromium-browser > /dev/null 2>&1 &
 ```
 
 
