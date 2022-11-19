@@ -189,6 +189,9 @@ The Fish shell has syntax highlighting. Install the Fish shell as follows:
 ```
 $ sudo dnf install fish 
 ```
+Also as an option, install fastfetch for some bling when fish is started. This is what fastfetch looks like on Fedora.
+
+![](images/fastfetch.png)
 
 The ~/.config/fish/config.fish file is like this:
 ```
@@ -205,6 +208,7 @@ if status is-interactive
 end
 #Add your favourite keyboard layout here for X11 for X11
 setxkbmap -layout us -variant EngramMod
+fastfetch
 ```
 
 Note - same what may be found in a Bash configuration file except the $ is removed.
