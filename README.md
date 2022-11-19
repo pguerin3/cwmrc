@@ -189,7 +189,12 @@ The Fish shell has syntax highlighting. Install the Fish shell as follows:
 ```
 $ sudo dnf install fish 
 ```
-Also as an option, install fastfetch for some bling when fish is started. This is what fastfetch looks like on Fedora.
+Also as an option, install fastfetch for some bling when fish is started.
+
+```
+$ sudo dnf install fastfetch
+```
+This is what fastfetch looks like on Fedora.
 
 ![](images/fastfetch.png)
 
