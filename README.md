@@ -180,6 +180,7 @@ focus_follows_mouse yes
 font_size 9
 enable_audio_bell no
 visual_bell_duration 0.1
+editor vim
 ```
 
 
