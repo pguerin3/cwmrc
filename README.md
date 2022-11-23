@@ -212,9 +212,17 @@ if status is-interactive
     set -gx LESS_TERMCAP_ue (printf '\e[0m') # leave underline mode
     set -gx LESS_TERMCAP_us (printf '\e[04;36m') # enter underline mode - cyan
 end
-#Add your favourite keyboard layout here for X11 for X11
+#Add your favourite keyboard layout here for X11
 setxkbmap -layout us -variant EngramMod
-fastfetch
+
+# Now it's your choice of fastfetch for every terminal
+#fastfetch
+# or fastfetch just for the 1st terminal (fish syntax)
+set -l LIVE_COUNTER $(ps a | awk '{print $2}' | grep -vi "tty*" | uniq | wc -l)
+if [ $LIVE_COUNTER -eq 1 ]
+     fastfetch
+end
+
 ```
 
 Note - same what may be found in a Bash configuration file except the $ is removed.
