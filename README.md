@@ -218,7 +218,7 @@ setxkbmap -layout us -variant EngramMod
 # Now it's your choice of fastfetch for every terminal
 #fastfetch
 # or fastfetch just for the 1st terminal (fish syntax)
-set -l LIVE_COUNTER $(ps a | awk '{print $2}' | grep -vi "tty*" | sort --unique | wc -l)
+set -l LIVE_COUNTER $(ps a -o tty $(pgrep $(echo $TERM)) | uniq --unique | wc -l)
 if [ $LIVE_COUNTER -eq 1 ]
      fastfetch
 end
