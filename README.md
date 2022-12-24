@@ -63,7 +63,7 @@ The application laucher can be run with a mouse click.
 ![native-luancher1](images/VirtualBox10.png)
 ![native-luancher2](images/VirtualBox11.png)
 
-Or you may run applications from the command line. For example:
+Or you may run applications from the shell. For example:
 
 ```
 $ chromium-browser&
@@ -209,7 +209,7 @@ My Kitty terminal is configured without scroll bars. Also use cntrl-shift-pageup
 In Kitty, secondary screen scrolling is off by default.
 
 Also define the font and font size you want to use with the Fish shell.
-In the comfig above I'm using FiraCode:
+In the config above I'm using FiraCode:
 [https://github.com/tonsky/FiraCode](https://github.com/tonsky/FiraCode)
 
 Kitty can autocreate a default configuration file in ~/.config/kitty/kitty.conf by using ctrl+shft+f2.
@@ -235,7 +235,7 @@ editor vim
 
 
 ## The Fish shell
-The Fish shell has syntax highlighting. Install the Fish shell as follows:
+The Fish shell has syntax highlighting with a selection of prompts and colour themes. Install the Fish shell as follows:
 
 ```
 $ sudo dnf install fish 
@@ -268,24 +268,25 @@ end
 ```
 
 The theme and prompt can also be selected from the native configurations.
-Display a list of themes with:
+Display a list of Fish themes with:
 ```
 fish_config theme show
 ```
-Then choose a theme like this:
+Then choose a Fish theme like this:
 ```
 fish_config theme choose 'ayu Dark'
 fish_config theme save 'ayu Dark'
 ```
-Similarly display a list of prompts with:
+Similarly display a list of Fish prompts with:
 ```
 fish_config prompt show
 ```
-And choose a prompt like this:
+And choose a Fish prompt like this:
 ```
 fish_config prompt choose nim
 fish_config prompt save
 ```
+An example of the 'ayu Dark' theme with a 'nim' prompt is below:
 
 ![](images/fish0001.png)
 
@@ -293,7 +294,7 @@ fish_config prompt save
 
 ## Window transparency with Picom
 
-Transparency in the terminal is enabled in the terminal, but the transparency it-self is performed by Picom:
+Transparency in the terminal is enabled in the terminal, but the transparency itself is performed by Picom:
 
 ```
 $ sudo dnf install picom
@@ -385,7 +386,7 @@ picom&
 #polybar example&
 exec cwm
 ```
-Now start the CWM with:
+Now start the Calm Window Manager with:
 ```
 startx
 ```
@@ -409,7 +410,8 @@ EndSection
 If you are using the native X11 drivers for your GPU, then it's possible you may encounter abnormal video. The same problems may not exist with the vendor supplied drivers.
 
 For the native X11 drivers, you may experience screen tearing and freezing for the Intel GPU that you're using.
-If so then try the following.
+If so, then try the following.
+
 Create the following file as the root user: /etc/X11/xorg.conf.d/20-intel.conf
 ```
 Section "Device"
