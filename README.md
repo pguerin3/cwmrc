@@ -147,6 +147,8 @@ ignore polybar
 # for the native application menu
 command urxvt	"urxvt"
 command kitty	"kitty"
+command top-green	"urxvt +sb -depth 32 -bg rgba:1111/1111/1111/9999 -fg [100]green -e top"
+command top		"urxvt +sb -depth 32 -bg rgba:0000/0000/0000/6666 -fg [100]cyan -e top"
 ```
 
 Inspect the CWM manual for all the default key bindings:
