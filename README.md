@@ -3,10 +3,6 @@
 
 This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
-The official repo for CWM is here:
-
-[https://github.com/leahneukirchen/cwm](https://github.com/leahneukirchen/cwm)
-
 CWM is a minimalist floating window manager:
  * float windows by default.
  * snap any window into a corner, or edge of the screen.
@@ -76,10 +72,30 @@ or to ignore any run-time errors:
 ```
 $ chromium-browser > /dev/null 2>&1 &
 ```
+Add the disown command to detach the application from the terminal:
+```
+$ chromium-browser > /dev/null 2>&1 &; disown
+```
+
+As systemd is used, managing the host from the shell can also be achieved with the following commands:
+
+```
+systemctl suspend
+```
+
+```
+systemctl reboot
+```
+
+```
+systemctl poweroff
+```
 
 
+# Installation and configuration of CWM
+The official repo for CWM is here:
 
-# Installation of CWM
+[https://github.com/leahneukirchen/cwm](https://github.com/leahneukirchen/cwm)
 
 Most Linux distributions have the CWM in their repository.
 So installing CWM is extremely easy.
@@ -101,16 +117,21 @@ fontname fixed-13
 
 vtile 50
 htile 50
-gap 0 0 0 0
+gap 1 1 1 1
 color activeborder red
 color inactiveborder black
 snapdist 3
 
+bind-key CM-Return	"kitty"
+bind-key CM-minus	window-vtile
+bind-key CMS-minus	window-htile
+
 autogroup 1 kitty,kitty
 autogroup 2 urxvt,URxvt
-autogroup 3 gvim,Gvim
+autogroup 3 brave-browser, Brave-browser
 autogroup 4 chromium-browser,Chromium-browser
 autogroup 5 pcmanfm,Pcmanfm
+autogroup 6 "VirtualBox Manager", "VirtualBox Manager"
 
 bind-key M-1 group-toggle-1
 bind-key M-2 group-toggle-2
@@ -121,14 +142,11 @@ bind-key M-6 group-toggle-6
 bind-key M-7 group-toggle-7
 bind-key M-0 group-toggle-all
 
-bind-key CM-Return	kitty
-bind-key CM-minus	window-vtile
-bind-key CMS-minus	window-htile
-
 ignore polybar
 
 # for the native application menu
 command urxvt	"urxvt"
+command kitty	"kitty"
 ```
 
 Inspect the CWM manual for all the default key bindings:
@@ -141,16 +159,37 @@ $ man cwmrc
 ```
 
 
-# Install applications
+# Applications
 
-## Urxvt terminal configuration file
+
+
+## System information with Fastfetch
+Also as an option, install Fastfetch for some bling when a terminal is started.
+The source is here:
+[https://github.com/LinusDierheimer/fastfetch](https://github.com/LinusDierheimer/fastfetch)
+
+Fastfetch is present in the Fedora repo:
+```
+$ sudo dnf install fastfetch
+```
+This is what Fastfetch looks like on Fedora.
+
+![](images/fastfetch.png)
+
+
+## The virtual terminal with Urxvt
+Urxvt is present in the Fedora repo:
 ```
 $ sudo dnf install rxvt-unicode 
 ```
+My urxvt terminal is configured without scroll bars. Also use shift-pageup to scroll up, and shift-pagedown to scroll down. 
+The +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the Vim editor will not be shown in the primary window after Vim has exited. The same setting is set with secondaryScroll.
+
 Create a ~/.Xdefaults file for the configuration of the urxvt terminal.
 Place the following configuration in it:
 ```
 URxvt.scrollBar: off
+# turn off the secondary screen scrolling for a pager. eg less.
 URxvt.secondaryScroll: off
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/aaaa
@@ -160,24 +199,35 @@ URxvt.geometry: 132x50
 URxvt.visualBell: on
 ```
 
-As urxvt is configured without scroll bars, use shift-pageup to scroll up, and shift-pagedown to scroll down. 
-The +ssr parameter of urxvt turns off secondary screen scroll, so for example text inside the VIM editor will not be shown in the primary window after VIM is exited.
 
-
-## The Kitty terminal
-Kitty can create a default configuration file in ~/.config/kitty/kitty.conf.
-(auto install the kitty.conf by using ctrl+shft+f2)
-Or you can maually create a configuration file yourself.
-
-Then you can add deviations to the head of the file similar to as follows:
+## The virtual terminal with Kitty
+Kitty is in the Fedora repo: 
 ```
-remember_window_size yes
+sudo dnf install kitty
+```
+My Kitty terminal is configured without scroll bars. Also use cntrl-shift-pageup to scroll up, and cntrl-shift-pagedown to scroll down. 
+In Kitty, secondary screen scrolling is off by default.
+
+Also define the font and font size you want to use with the Fish shell.
+In the comfig above I'm using FiraCode:
+[https://github.com/tonsky/FiraCode](https://github.com/tonsky/FiraCode)
+
+Kitty can autocreate a default configuration file in ~/.config/kitty/kitty.conf by using ctrl+shft+f2.
+Or you can maually create a configuration file yourself in the same location.
+
+Then you can add configurations to the head of the file similar to as follows:
+```
+remember_window_size no
+initial_window_width  1000
+initial_window_height 1000
 hide_window_decorations yes
-background_opacity 0.7
+background_opacity 0.9
 dynamic_background_opacity yes
 scrollback_fill_enlarged_window yes
 focus_follows_mouse yes
-font_size 9
+# dnf install fira-code-fonts
+font_family Fira Code Regular
+font_size 10
 enable_audio_bell no
 visual_bell_duration 0.1
 editor vim
@@ -190,15 +240,6 @@ The Fish shell has syntax highlighting. Install the Fish shell as follows:
 ```
 $ sudo dnf install fish 
 ```
-Also as an option, install fastfetch for some bling when fish is started.
-
-```
-$ sudo dnf install fastfetch
-```
-This is what fastfetch looks like on Fedora.
-
-![](images/fastfetch.png)
-
 The ~/.config/fish/config.fish file is like this:
 ```
 if status is-interactive
@@ -212,8 +253,10 @@ if status is-interactive
     set -gx LESS_TERMCAP_ue (printf '\e[0m') # leave underline mode
     set -gx LESS_TERMCAP_us (printf '\e[04;36m') # enter underline mode - cyan
 end
+#Note - same what may be found in a Bash configuration file except the $ is removed.
+
 #Add your favourite keyboard layout here for X11
-setxkbmap -layout us -variant EngramMod
+#setxkbmap -layout us -variant <name>
 
 # Now it's your choice of fastfetch for every terminal
 #fastfetch
@@ -222,15 +265,35 @@ set -l LIVE_COUNTER $(ps a -o tty $(pgrep $(echo $TERM)) | uniq --unique | wc -l
 if [ $LIVE_COUNTER -eq 1 ]
      fastfetch
 end
-
 ```
 
-Note - same what may be found in a Bash configuration file except the $ is removed.
+The theme and prompt can also be selected from the native configurations.
+Display a list of themes with:
+```
+fish_config theme show
+```
+Then choose a theme like this:
+```
+fish_config theme choose 'ayu Dark'
+fish_config theme save 'ayu Dark'
+```
+Similarly display a list of prompts with:
+```
+fish_config prompt show
+```
+And choose a prompt like this:
+```
+fish_config prompt choose nim
+fish_config prompt save
+```
+
+![](images/fish0001.png)
+
 
 
 ## Window transparency with Picom
 
-Transparency in the terminal is performed by either Compton or Picom:
+Transparency in the terminal is enabled in the terminal, but the transparency it-self is performed by Picom:
 
 ```
 $ sudo dnf install picom
@@ -303,6 +366,7 @@ Use of other packages can be seen in the screenshots, and they are:
  + xclip - copy between the clipboard and the primary selection
  + git
  + sysstat - for the sar utility
+ + vim - text editor
 
 ```
 $ sudo dnf install chromium exa feh xclip neovim vim-X11 git sysstat 
@@ -342,7 +406,10 @@ EndSection
 ```
 
 ### Rectify any screen tearing and freezing
-If you are experiencing screen tearing and freezing for the Intel GPU that you're using then try the following.
+If you are using the native X11 drivers for your GPU, then it's possible you may encounter abnormal video. The same problems may not exist with the vendor supplied drivers.
+
+For the native X11 drivers, you may experience screen tearing and freezing for the Intel GPU that you're using.
+If so then try the following.
 Create the following file as the root user: /etc/X11/xorg.conf.d/20-intel.conf
 ```
 Section "Device"
@@ -356,20 +423,4 @@ Section "Device"
 EndSection
 ```
 
-
-## Shutdown, Reboot, and Suspend
-
-As systemd is used, managing the host can be achieved with the following commands:
-
-```
-systemctl suspend
-```
-
-```
-systemctl reboot
-```
-
-```
-systemctl poweroff
-```
 
