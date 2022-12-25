@@ -368,7 +368,7 @@ Install Neovim in Fedora like this:
 sudo dnf install neovim
 ```
 
-Neovim can reuse a Vim coniguration file, but for those that want to use Lua, then the starting point is to do the following steps.
+Neovim can reuse a Vim configuration file (with Vimscript), but for those that want to use Lua, then the starting point is to do the following steps.
 
 Create a Lua directory for Neovim:
 ```
@@ -376,6 +376,7 @@ mkdir -p ~/.config/nvim/lua
 ```
 
 Now create a settings file using Lua in ~/.config/nvim/lua/settings.lua
+The settings file will be based on your current vim.init file, but now the Lua syntax will be used instead.
 
 ```
 local o = vim.o
@@ -398,16 +399,16 @@ wo.cursorline = true
 -- buffer-local options
 --bo.tabstop = 4
 
---imap ( ()<left>
+-- set the key map to creat the () combination everytime the ( is entered
 vim.api.nvim_set_keymap('i', '(', '()<left>', { noremap = true, silent = true })
+-- disable the ZZ combination
 vim.api.nvim_set_keymap('n', 'ZZ', '<Nop>', { noremap = true, silent = true })
 
 --executes an ex command
+--set the colorscheme from the core selections.
 vim.api.nvim_command('colorscheme darkblue')
 
---also executes an ex command (for the nvim-base16 plugin)
-vim.cmd('colorscheme base16-everforest')
-
+-- highlight the vertical split, and the whole line the cursor is on.
 vim.api.nvim_exec(
 [[
 	highlight vertsplit cterm=none gui=none
@@ -416,13 +417,14 @@ vim.api.nvim_exec(
 )
 
 -- Short-hand for vim.api.nvim_exec
+-- set the format for NETRW
 vim.cmd([[
 	let g:netrw_liststyle=2
 	let g:netrw_keepdir=0
 ]])
 ```
 
-Now create a reference to the settings file in ~/.config/nvim/init.lua file
+Now create a reference to the settings file in ~/.config/nvim/init.lua file like this:
 
 ```
 -- Environment settings in lua/settings.lua
