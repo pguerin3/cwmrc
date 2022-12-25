@@ -292,6 +292,7 @@ An example of the 'ayu Dark' theme with a 'nim' prompt is below:
 
 ![](images/fish0001.png)
 
+If you are running a job in the background then it will be shown.
 
 
 ## Window transparency with Picom
