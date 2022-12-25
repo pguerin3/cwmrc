@@ -358,6 +358,76 @@ An modified version of the example Polybar, with the bar at 50% of the screen wi
 ![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
 
 
+## Text editing with Neovim and Lua
+
+Neovim can be thought of as an enhanced Vim editor, with the advantage that the Lua language can be used for configuration.
+
+Install Neovim in Fedora like this:
+
+```
+sudo dnf install neovim
+```
+
+Neovim can reuse a Vim coniguration file, but for those that want to use Lua, then the starting point is to do the following steps.
+
+Create a Lua directory for Neovim:
+```
+mkdir -p ~/.config/nvim/lua
+```
+
+Now create a settings file using Lua in ~/.config/nvim/lua/settings.lua
+
+```
+local o = vim.o
+local wo = vim.wo
+local bo = vim.bo
+
+-- global options
+o.termguicolors = true
+o.ignorecase = true
+o.smartcase = true
+o.mouse='n'
+o.foldclose='all'
+o.linebreak=true
+
+-- window-local options
+wo.number = true
+wo.relativenumber = true
+wo.cursorline = true
+
+-- buffer-local options
+--bo.tabstop = 4
+
+--imap ( ()<left>
+vim.api.nvim_set_keymap('i', '(', '()<left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'ZZ', '<Nop>', { noremap = true, silent = true })
+
+--executes an ex command
+vim.api.nvim_command('colorscheme darkblue')
+
+--also executes an ex command (for the nvim-base16 plugin)
+vim.cmd('colorscheme base16-everforest')
+
+vim.api.nvim_exec(
+[[
+	highlight vertsplit cterm=none gui=none
+	highlight cursorline guibg=Grey20
+]], false
+)
+
+-- Short-hand for vim.api.nvim_exec
+vim.cmd([[
+	let g:netrw_liststyle=2
+	let g:netrw_keepdir=0
+]])
+```
+
+Now create a reference to the settings file in ~/.config/nvim/init.lua file
+
+```
+-- Environment settings in lua/settings.lua
+require('settings')
+```
 
 
 ## Other applications
