@@ -409,7 +409,7 @@ wo.cursorline = true
 -- buffer-local options
 --bo.tabstop = 4
 
--- set the key map to creat the () combination everytime the ( is entered
+-- set the key map to create the () combination everytime the ( is entered
 vim.api.nvim_set_keymap('i', '(', '()<left>', { noremap = true, silent = true })
 -- disable the ZZ combination
 vim.api.nvim_set_keymap('n', 'ZZ', '<Nop>', { noremap = true, silent = true })
@@ -454,7 +454,7 @@ Use of other packages can be seen in the screenshots, and they are:
  + vim - text editor
 
 ```
-$ sudo dnf install chromium exa feh xclip neovim vim-X11 git sysstat 
+$ sudo dnf install chromium exa feh xclip vim-X11 git sysstat 
 ```
 
 
