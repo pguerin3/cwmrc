@@ -15,7 +15,6 @@ If the native application launcher is not to your liking, then it's easy to add 
 
 As CWM doesn't feature multi-monitor support, the ideal use-case is that you are just using a single monitor.
 
-The install instructions below are for Fedora....
 
 
 ## Screenshots of floating windows that are snapped into tiles
@@ -104,9 +103,19 @@ For example, to install in Fedora:
 $ sudo dnf install cwm 
 ```
 
+For Debian:
+```
+sudo apt-get install cwm
+```
+
+For Arch:
+```
+sudo pacman -S cwm
+```
+
 FreeBSD also has CWM in their repository, and is installed as follows:
 ```
-$ sudo pkg install cwm
+sudo pkg install cwm
 ```
 
 The ~/.cwmrc configuration file used in the screen shots is similar to this:
