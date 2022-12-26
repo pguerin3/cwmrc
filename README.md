@@ -300,9 +300,12 @@ fish_config prompt save
 An example of the 'ayu Dark' theme with a 'nim' prompt is below:
 
 ![](images/fish0001.png)
-![](images/fish0002.png)
 
 If you are running a job in the background then it will be shown.
+
+![](images/fish0002.png)
+
+When no jobs are present then the normal prompt returns.
 
 
 ## Window transparency with Picom
