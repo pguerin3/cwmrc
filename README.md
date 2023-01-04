@@ -455,10 +455,10 @@ Use of other packages can be seen in the screenshots, and they are:
  + xclip - copy between the clipboard and the primary selection
  + git
  + sysstat - for the sar utility
- + vim - text editor
+ + redshift - adjusts the color temperature of your screen
 
 ```
-$ sudo dnf install chromium exa feh xclip vim-X11 git sysstat 
+$ sudo dnf install chromium exa feh xclip vim-X11 git sysstat redshift
 ```
 
 
@@ -466,12 +466,18 @@ $ sudo dnf install chromium exa feh xclip vim-X11 git sysstat
 Can use ~/.initrc to start the default the applications, before starting CWM:
 ```
 xrandr --output VGA-0 --auto
+
 #feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/wallpapers-master&
 #Fedora wallpaper is here:
 feh --no-fehbg --bg-fill /usr/share/backgrounds/images/default-16_10.png&
+
 picom&
+
 #uncomment to execute by default
 #polybar example&
+
+redshift -l manual -l -34.43:150.85 -t 6500:3000&
+
 exec cwm
 ```
 Now start the Calm Window Manager with:
