@@ -448,6 +448,13 @@ require('settings')
 ![](images/nvim.png)
 
 
+## Package management with DNF
+
+Optimise dnf for performance, by adding the following to /etc/dnf/dnf.conf
+max_parallel_downloads=10
+fastestmirror=True
+
+
 ## Other applications
 
 Use of other packages can be seen in the screenshots, and they are:
