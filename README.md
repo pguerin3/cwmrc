@@ -451,8 +451,10 @@ require('settings')
 ## Package management with DNF
 
 Optimise dnf for performance, by adding the following to /etc/dnf/dnf.conf
+```
 max_parallel_downloads=10
 fastestmirror=True
+```
 
 
 ## Other applications
