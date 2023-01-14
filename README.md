@@ -445,6 +445,8 @@ Now create a reference to the settings file in ~/.config/nvim/init.lua file like
 require('settings')
 ```
 
+![](images/nvim.png)
+
 
 ## Other applications
 
