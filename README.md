@@ -445,6 +445,8 @@ Now create a reference to the settings file in ~/.config/nvim/init.lua file like
 require('settings')
 ```
 
+The following screenshot uses the everforest color scheme.
+
 ![](images/nvim.png)
 
 
