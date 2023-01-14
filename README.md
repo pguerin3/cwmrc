@@ -4,10 +4,10 @@
 This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
- * float windows by default.
- * snap any window into a corner, or edge of the screen.
- * snap the floating windows into a tiling configuration. eg either horizontal master/stack, or vertical master/stack.
- * retain gaps between the windows and the edge of the screen.
+ - [x] float windows by default.
+ - [x] snap any window into a corner, or edge of the screen.
+ - [x] snap the floating windows into a tiling configuration. eg either horizontal master/stack, or vertical master/stack.
+ - [x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with the mouse or touchpad. eg use the keyboard to launch applications.
 
