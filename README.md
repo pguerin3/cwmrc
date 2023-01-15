@@ -43,7 +43,7 @@ Then alt+cntrl+minus to restacck the 5 windows into the tiled layout with the fo
 
 So now 4 windows have been snapped into the stack on the right, and the focused window at that time was snapped into the master position on the left.
 
-The tiled windows can also be restacked, so the master is on top.
+The tiled windows can also be restacked with alt+cntrl+shift+minus, so the master is now on top.
 
 ![tiled windows](images/screen.png)
 
