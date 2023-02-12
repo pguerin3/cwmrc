@@ -145,6 +145,7 @@ autogroup 3 brave-browser, Brave-browser
 autogroup 4 chromium-browser,Chromium-browser
 autogroup 5 pcmanfm,Pcmanfm
 autogroup 6 "VirtualBox Manager", "VirtualBox Manager"
+autogroup 8 "vncviewer", "Vncviewer"
 
 bind-key M-1 group-toggle-1
 bind-key M-2 group-toggle-2
@@ -153,6 +154,7 @@ bind-key M-4 group-toggle-4
 bind-key M-5 group-toggle-5
 bind-key M-6 group-toggle-6
 bind-key M-7 group-toggle-7
+bind-key M-8 group-toggle-8
 bind-key M-0 group-toggle-all
 
 ignore polybar
