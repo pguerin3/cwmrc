@@ -456,23 +456,39 @@ The following screenshot uses the everforest color scheme.
 ![](images/nvim.png)
 
 
-## Package management with DNF
+## PDF document viewer with Zathura
+It's possible to view PDFs with your browser, but a dedicated PDF viewer can be more convenient.
 
-Optimise dnf for performance, by adding the following to /etc/dnf/dnf.conf
 ```
-max_parallel_downloads=10
-fastestmirror=True
+-- Install with plugins
+dnf install zathura zathura-plugins-all
+dnf install zathura-fish-completion
 ```
+Some of the key bindings are the same as Vim, with the basics as:
+ + j = down
+ + k = up
+ + g = top of document
+ + G = bottom of document
+ + - = zoom in
+ + + = zoom out
+ + = = zoom to original size
+ + q = quit
+
+Viewing a PDF is as easy as:
+```
+zathura <name of pdf>
+```
+![](images/zathura.png)
 
 
 ## Other applications
 
 Use of other packages can be seen in the screenshots, and they are:
- + chromium browser
+ + chromium - browser
  + exa - a modern replacement for ls
- + feh wallpaper launcher
+ + feh - wallpaper launcher
  + xclip - copy between the clipboard and the primary selection
- + git
+ + git - version control
  + sysstat - for the sar utility
  + redshift - adjusts the color temperature of your screen
 
@@ -481,31 +497,7 @@ $ sudo dnf install chromium exa feh xclip vim-X11 git sysstat redshift
 ```
 
 
-## X11 startx configuration
-Can use ~/.initrc to start the default the applications, before starting CWM:
-```
-xrandr --output VGA-0 --auto
-
-#feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/wallpapers-master&
-#Fedora wallpaper is here:
-feh --no-fehbg --bg-fill /usr/share/backgrounds/images/default-16_10.png&
-
-picom&
-
-#uncomment to execute by default
-#polybar example&
-
-redshift -l manual -l -34.43:150.85 -t 6500:3000&
-
-exec cwm
-```
-Now start the Calm Window Manager with:
-```
-startx
-```
-
-
-## Optional - X11 configurations
+## Other configurations
 
 ### Enhance the touchpad
 If you are using a laptop, then the touchpad may not have full functionality.
@@ -538,4 +530,35 @@ Section "Device"
 EndSection
 ```
 
+### Package management with DNF
+
+Optimise dnf for performance, by adding the following to /etc/dnf/dnf.conf
+```
+max_parallel_downloads=10
+fastestmirror=True
+```
+
+### X11 startx configuration
+
+Can use ~/.initrc to start the default the applications, before starting CWM:
+```
+xrandr --output VGA-0 --auto
+
+#feh --no-fehbg --bg-fill --randomize /usr/share/backgrounds/wallpapers-master&
+#Fedora wallpaper is here:
+feh --no-fehbg --bg-fill /usr/share/backgrounds/images/default-16_10.png&
+
+picom&
+
+#uncomment to execute by default
+#polybar example&
+
+redshift -l manual -l -34.43:150.85 -t 6500:3000&
+
+exec cwm
+```
+Now start the Calm Window Manager with:
+```
+startx
+```
 
