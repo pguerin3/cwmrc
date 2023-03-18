@@ -251,7 +251,7 @@ editor vim
 ```
 
 
-## The Fish shell
+## An interactive shell with Fish
 The Fish shell has syntax highlighting with a selection of prompts and colour themes. Install the Fish shell as follows:
 
 ```
@@ -460,7 +460,6 @@ The following screenshot uses the everforest color scheme.
 It's possible to view PDFs with your browser, but a dedicated PDF viewer can be more convenient.
 
 ```
--- Install with plugins
 dnf install zathura zathura-plugins-all
 dnf install zathura-fish-completion
 ```
@@ -469,9 +468,9 @@ Some of the key bindings are the same as Vim, with the basics as:
  + k = up
  + g = top of document
  + G = bottom of document
- + - = zoom in
- + + = zoom out
- + = = zoom to original size
+ + minus = zoom in
+ + plus = zoom out
+ + equals = original size
  + q = quit
 
 Viewing a PDF is as easy as:
