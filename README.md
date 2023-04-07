@@ -1,6 +1,10 @@
 
 # The Calm Window Manager (CWM) - a minimalist floating window manager that also tiles
 
+![tiled windows](images/screen.png)
+
+![tiled windows](images/screen1.png)
+
 This repository showcases configuration of the Calm Window Manager (CWM) to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
@@ -410,14 +414,23 @@ o.smartcase = true
 o.mouse='n'
 o.foldclose='all'
 o.linebreak=true
+o.visualbell = true
+o.mousefocus = true
+o.behave = 'xterm'
+o.termpastefilter = 'BS,HT,ESC,DEL,C0,C1'
+o.winminwidth = 12
 
 -- window-local options
 wo.number = true
 wo.relativenumber = true
 wo.cursorline = true
+wo.winblend = 20
 
 -- buffer-local options
 --bo.tabstop = 4
+bo.shiftwidth = 4
+bo.autoindent = true
+bo.nrformats='bin,hex,octal,alpha'
 
 -- set the key map to create the () combination everytime the ( is entered
 vim.api.nvim_set_keymap('i', '(', '()<left>', { noremap = true, silent = true })
@@ -441,7 +454,14 @@ vim.api.nvim_exec(
 vim.cmd([[
 	let g:netrw_liststyle=2
 	let g:netrw_keepdir=0
+	let g:netrw_sizestyle='H'
 ]])
+
+-- for highlight on yank
+vim.cmd([[
+    au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
+]])
+
 ```
 
 Now create a reference to the settings file in ~/.config/nvim/init.lua file like this:
