@@ -419,27 +419,28 @@ o.mousefocus = true
 o.behave = 'xterm'
 o.termpastefilter = 'BS,HT,ESC,DEL,C0,C1'
 o.winminwidth = 12
+-- for everforest
+o.background='dark'
 
 -- window-local options
 wo.number = true
 wo.relativenumber = true
 wo.cursorline = true
+-- Enables pseudo-transparency for a floating window.
 wo.winblend = 20
 
 -- buffer-local options
 --bo.tabstop = 4
 bo.shiftwidth = 4
 bo.autoindent = true
+-- for the increment cntrl-a and decrement cntrl-x.
 bo.nrformats='bin,hex,octal,alpha'
+bo.matchpairs='(:),{:},[:],<:>'
 
 -- set the key map to create the () combination everytime the ( is entered
 vim.api.nvim_set_keymap('i', '(', '()<left>', { noremap = true, silent = true })
 -- disable the ZZ combination
 vim.api.nvim_set_keymap('n', 'ZZ', '<Nop>', { noremap = true, silent = true })
-
---executes an ex command
---set the colorscheme from the core selections.
-vim.api.nvim_command('colorscheme darkblue')
 
 -- highlight the vertical split, and the whole line the cursor is on.
 vim.api.nvim_exec(
@@ -462,6 +463,12 @@ vim.cmd([[
     au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
 ]])
 
+--executes an ex command
+--set the colorscheme from the core selections.
+--vim.api.nvim_command('colorscheme darkblue')
+-- https://github.com/neanias/everforest-nvim
+vim.cmd([[colorscheme everforest]])
+
 ```
 
 Now create a reference to the settings file in ~/.config/nvim/init.lua file like this:
@@ -469,7 +476,44 @@ Now create a reference to the settings file in ~/.config/nvim/init.lua file like
 ```
 -- Environment settings in lua/settings.lua
 require('settings')
+require('packer')
+
+-- https://github.com/neanias/everforest-nvim
+require("everforest").setup({
+  -- Controls the "hardness" of the background. Options are "soft", "medium" or "hard".
+  -- Default is "medium".
+  background = "medium",
+  -- How much of the background should be transparent. Options are 0, 1 or 2.
+  -- Default is 0.
+  --
+  -- 2 will have more UI components be transparent (e.g. status line
+  -- background).
+  transparent_background_level = 0,
+  -- Whether italics should be used for keywords, builtin types and more.
+  italics = false,
+  -- Disable italic fonts for comments. Comments are in italics by default, set
+  -- this to `true` to make them _not_ italic!
+  disable_italic_comments = false,
+})
+
 ```
+Now edit the ~/config/nvim/lua/plugins.lua
+
+```
+  -- https://github.com/neanias/everforest-nvim
+  use({
+  "neanias/everforest-nvim",
+  -- Optional; default configuration will be used if setup isn't called.
+  config = function()
+    require("everforest").setup()
+  end,
+  })
+
+```
+Now install and resync the plugin like this:
+:PackerInstall
+:PackerSync
+:PackerCompile
 
 The following screenshot uses the everforest color scheme.
 
