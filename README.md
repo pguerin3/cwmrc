@@ -417,10 +417,17 @@ o.linebreak=true
 o.visualbell = true
 o.mousefocus = true
 o.behave = 'xterm'
-o.termpastefilter = 'BS,HT,ESC,DEL,C0,C1'
+--o.termpastefilter = 'BS,HT,ESC,DEL,C0,C1'
+o.termpastefilter = o.termpastefilter..',C0,C1'
 o.winminwidth = 12
 -- for everforest
 o.background='dark'
+o.guicursor='n-v-c:block,'..
+	'i-ci-ve:ver25,'..
+	'r-cr:hor20,'..
+	'o:hor50,'..
+	'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,'..
+	'sm:block-blinkwait175-blinkoff150-blinkon175'
 
 -- window-local options
 wo.number = true
@@ -431,11 +438,11 @@ wo.winblend = 20
 
 -- buffer-local options
 --bo.tabstop = 4
-bo.shiftwidth = 4
+vim.o.shiftwidth = 4
 bo.autoindent = true
 -- for the increment cntrl-a and decrement cntrl-x.
-bo.nrformats='bin,hex,octal,alpha'
-bo.matchpairs='(:),{:},[:],<:>'
+vim.o.nrformats = vim.o.nrformats..',octal,alpha'
+vim.o.matchpairs = vim.o.matchpairs..',<:>'
 
 -- set the key map to create the () combination everytime the ( is entered
 vim.api.nvim_set_keymap('i', '(', '()<left>', { noremap = true, silent = true })
@@ -463,7 +470,6 @@ vim.cmd([[
     au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
 ]])
 
---executes an ex command
 --set the colorscheme from the core selections.
 --vim.api.nvim_command('colorscheme darkblue')
 -- https://github.com/neanias/everforest-nvim
