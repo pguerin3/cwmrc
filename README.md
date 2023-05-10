@@ -55,11 +55,17 @@ The tiled windows can also be restacked with alt+cntrl+shift+minus, so the maste
 ## Screenshots of floating windows (without tiling)
 
 ![screenshot1](images/VirtualBox1.png)
+
 ![screenshot2](images/VirtualBox2.png)
+
 ![screenshot3](images/VirtualBox3.png)
+
 ![screenshot4](images/VirtualBox4.png)
+
 ![screenshot5](images/VirtualBox5.png)
+
 ![screenshot6](images/VirtualBox6.png)
+
 ![screenshot7](images/VirtualBox7.png)
 
 
@@ -68,6 +74,7 @@ The tiled windows can also be restacked with alt+cntrl+shift+minus, so the maste
 The application laucher can be run with a mouse click.
 
 ![native-luancher1](images/VirtualBox10.png)
+
 ![native-luancher2](images/VirtualBox11.png)
 
 Or you may run applications from the shell. For example:
@@ -379,6 +386,7 @@ Now the Polybar will look something like this:
 ### Tiled windows with a Polybar (top right corner):
 
 An modified version of the example Polybar, with the bar at 50% of the screen width, is shown below:
+
 ![](images/VirtualBox_Fedora35_23_04_2022_18_14_56.png)
 
 
