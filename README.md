@@ -325,6 +325,52 @@ If you are running a job in the background then it will be shown.
 When no jobs are present then the normal prompt returns.
 
 
+## Terminal shell with Zsh
+The Zsh shell is more of a Bash syntax with some of the Fish benefits including syntax highlighting and auto suggestions. Unlike Fish, Zsh as a vim mode so you can escape and then use the vim key bindings to help you edit a command.
+
+Install the Zsh shell as follows:
+
+```
+sudo dnf install zsh zsh-autosuggestions zsh-syntax-highlighting
+```
+Compared with Fish, there are less features out-of-the-box, so Zsh should be setup with a configuration file up-front. Create a default ~/.zshrc file with the following contents:
+
+```
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd beep extendedglob nomatch notify
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/me/.zshrc'
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+alias ls='ls --color=auto --group-directories-first -v'
+setxkbmap -layout us -variant EngramMod
+EDITOR=vim
+setopt autocd
+setopt correctall
+
+autoload -Uz promptinit
+promptinit
+
+prompt walters
+PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
+RPROMPT='[%F{yellow}%?%f]'
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# End of ~/.zshrc
+```
+
+An example of a basic Zsh theme (eg walters) is below:
+
+![](images/zsh0001.png)
+
+
 ## Window transparency with Picom
 
 Transparency in the terminal is enabled in the terminal, but the transparency itself is performed by Picom:
