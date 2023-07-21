@@ -300,6 +300,9 @@ Display a list of Fish themes with:
 ```
 fish_config theme show
 ```
+
+![](images/fish0003.png)
+
 Then choose a Fish theme like this:
 ```
 fish_config theme choose 'ayu Dark'
