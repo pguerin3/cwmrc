@@ -366,7 +366,15 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # End of ~/.zshrc
 ```
 
-An example of a basic Zsh theme (eg walters) is below:
+There are a number of native command prompt themes available, and they can be listed with :
+
+```
+prompt -p
+```
+
+![](images/zsh0002.png)
+
+An example of a basic Zsh command prompt theme (eg walters) is below:
 
 ![](images/zsh0001.png)
 
