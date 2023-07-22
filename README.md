@@ -363,11 +363,14 @@ promptinit
 prompt walters
 PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
 RPROMPT='[%F{yellow}%?%f]'
+
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-fastfetch
-# End of ~/.zshrc
+# execute fastfetch on the first terminal only
+if [ $(ps a -o tty $(pgrep $(echo $TERM)) | uniq --unique | wc -l) -eq 1 ]; then
+  fastfetch
+fi
 ```
 
 There are a number of native command prompt themes available, and they can be listed with :
