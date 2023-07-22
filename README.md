@@ -353,7 +353,6 @@ compinit
 # End of lines added by compinstall
 
 alias ls='ls --color=auto --group-directories-first -v'
-setxkbmap -layout us -variant EngramMod
 EDITOR=vim
 setopt autocd
 setopt correctall
@@ -366,6 +365,8 @@ PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
 RPROMPT='[%F{yellow}%?%f]'
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+fastfetch
 # End of ~/.zshrc
 ```
 
