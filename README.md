@@ -1,6 +1,8 @@
 
 # The Calm Window Manager (CWM) - a minimalist floating window manager that also tiles
 
+![tiled windows](images/screen2.png)
+
 ![tiled windows](images/screen.png)
 
 ![tiled windows](images/screen1.png)
