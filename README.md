@@ -242,6 +242,9 @@ Also define the font and font size you want to use with the Fish shell.
 In the config above I'm using FiraCode:
 [https://github.com/tonsky/FiraCode](https://github.com/tonsky/FiraCode)
 
+```
+$ sudo dnf install fira-code-fonts
+```
 Kitty can autocreate a default configuration file in ~/.config/kitty/kitty.conf by using ctrl+shft+f2.
 Or you can maually create a configuration file yourself in the same location.
 
