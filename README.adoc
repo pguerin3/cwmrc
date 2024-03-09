@@ -18,7 +18,6 @@ image:images/screen.png[tiled windows]
 
 image:images/screen1.png[tiled windows]
 
-[%hardbreaks]
 This repository showcases configuration of the Calm Window Manager (CWM)
 to keep the minimal asthetic, but at the same time make more practical.
 
