@@ -24,11 +24,11 @@ to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
 
- [x] float windows by default.
- [x] snap any window into a corner, or edge of the screen.
- [x] snap the floating windows into a tiling configuration. eg either
+* [x] float windows by default.
+* [x] snap any window into a corner, or edge of the screen.
+* [x] snap the floating windows into a tiling configuration. eg either
 horizontal master/stack, or vertical master/stack.
- [x] retain gaps between the windows and the edge of the screen.
+* [x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with
 the mouse or touchpad. eg use the keyboard to launch applications.
@@ -151,7 +151,7 @@ systemctl poweroff
 
 The official repo for CWM is here:
 
-https://github.com/leahneukirchen/cwm[https://github.com/leahneukirchen/cwm]
+https://github.com/leahneukirchen/cwm
 
 Most Linux distributions have the CWM in their repository. So installing
 CWM is extremely easy. For example, to install in Fedora:
@@ -253,7 +253,7 @@ man cwmrc
 
 Also as an option, install Fastfetch for some bling when a terminal is
 started. The source is here:
-https://github.com/LinusDierheimer/fastfetch[https://github.com/LinusDierheimer/fastfetch]
+https://github.com/LinusDierheimer/fastfetch
 
 Fastfetch is present in the Fedora repo:
 
@@ -312,7 +312,7 @@ down. In Kitty, secondary screen scrolling is off by default.
 
 Also define the font and font size you want to use with the Fish shell.
 In the config above I'm using FiraCode:
-https://github.com/tonsky/FiraCode[https://github.com/tonsky/FiraCode]
+https://github.com/tonsky/FiraCode
 
 [source, bash]
 ....
@@ -356,7 +356,7 @@ sudo dnf install fish
 
 The ~/.config/fish/config.fish file is like this:
 
-[source, bash]
+[source, fish]
 ....
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -386,7 +386,7 @@ end
 The theme and prompt can also be selected from the native
 configurations. Display a list of Fish themes with:
 
-[source, bash]
+[source, fish]
 ....
 fish_config theme show
 ....
