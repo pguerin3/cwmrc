@@ -23,11 +23,11 @@ to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
 
- [x] float windows by default.
- [x] snap any window into a corner, or edge of the screen.
- [x] snap the floating windows into a tiling configuration. eg either
+[x] float windows by default.
+[x] snap any window into a corner, or edge of the screen.
+[x] snap the floating windows into a tiling configuration. eg either
 horizontal master/stack, or vertical master/stack.
- [x] retain gaps between the windows and the edge of the screen.
+[x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with
 the mouse or touchpad. eg use the keyboard to launch applications.
@@ -45,8 +45,6 @@ you are just using a single monitor.
 
 To create a few terminal windows, use alt+cntrl+enter for each terminal.
 
-// page break
-<<<
 
 ==== Without a Polybar:
 
@@ -145,6 +143,9 @@ systemctl reboot
 systemctl poweroff
 ....
 
+// thematic break (aka horizontal rule)
+---
+
 == Installation and configuration of CWM
 
 The official repo for CWM is here:
@@ -241,6 +242,9 @@ for the ~/.cwmrc file:
 $ man cwmrc
 ....
 
+
+// thematic break (aka horizontal rule)
+---
 
 == Applications
 
@@ -760,6 +764,7 @@ image:images/zathura.png[image]
 
 Use of other packages can be seen in the screenshots, and they are:
 
+[circle]
 * chromium - browser
 * exa - a modern replacement for ls
 * feh - wallpaper launcher
@@ -783,6 +788,7 @@ double-tap selection is not. So to enable a double-tap selection, create
 the following file as the root user:
 /etc/X11/xorg.conf.d/10-touchpad.conf
 
+[source]
 ....
 Section "InputClass"
     Identifier "tap-by-default"
@@ -804,6 +810,7 @@ following.
 Create the following file as the root user:
 /etc/X11/xorg.conf.d/20-intel.conf
 
+[source]
 ....
 Section "Device"
     Identifier  "Intel Graphics"
@@ -821,6 +828,7 @@ EndSection
 Optimise dnf for performance, by adding the following to
 /etc/dnf/dnf.conf
 
+[source]
 ....
 max_parallel_downloads=10
 fastestmirror=True
