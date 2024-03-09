@@ -4,8 +4,10 @@ Authored by me
 :description: setup for a minimalist interface.
 :url-repo: https://github.com/pguerin3/cwmrc
 :url-adoc: https://docs.gitlab.com/ee/user/asciidoc.html
+:icons: font
 
 // https://docs.gitlab.com/ee/user/asciidoc.html
+// Note: It’s possible to generate diagrams and flowcharts from text in GitLab using Mermaid or PlantUML.
 
 == The Calm Window Manager (CWM) - a minimalist floating window manager that also tiles
 
@@ -21,11 +23,11 @@ to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
 
-[x] float windows by default.
-[x] snap any window into a corner, or edge of the screen.
-[x] snap the floating windows into a tiling configuration. eg either
+* [x] float windows by default.
+* [x] snap any window into a corner, or edge of the screen.
+* [x] snap the floating windows into a tiling configuration. eg either
 horizontal master/stack, or vertical master/stack.
-[x] retain gaps between the windows and the edge of the screen.
+* [x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with
 the mouse or touchpad. eg use the keyboard to launch applications.
@@ -36,9 +38,15 @@ to add 3rd-party lanchers and status bars. eg Polybar.
 As CWM doesn't feature multi-monitor support, the ideal use-case is that
 you are just using a single monitor.
 
+// thematic break (aka horizontal rule)
+---
+
 === Screenshots of floating windows that are snapped into tiles
 
 To create a few terminal windows, use alt+cntrl+enter for each terminal.
+
+// page break
+<<<
 
 ==== Without a Polybar:
 
