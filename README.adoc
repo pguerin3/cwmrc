@@ -5,6 +5,7 @@ Authored by me
 :url-repo: https://github.com/pguerin3/cwmrc
 :url-adoc: https://docs.gitlab.com/ee/user/asciidoc.html
 :icons: font
+:hide-uri-scheme:
 
 // https://docs.gitlab.com/ee/user/asciidoc.html
 // Note: It’s possible to generate diagrams and flowcharts from text in GitLab using Mermaid or PlantUML.
@@ -542,10 +543,7 @@ $ sudo dnf install xset
 
 Then follow the instructions in github to install the siji font:
 
-[source]
-....
 https://github.com/stark/siji
-....
 
 Now ensure the Polybar config.ini file refers to the google-noto-emoji
 font:
@@ -606,7 +604,7 @@ Now create a settings file using Lua in ~/.config/nvim/lua/settings.lua
 The settings file will be based on your current vim.init file, but now
 the Lua syntax will be used instead.
 
-[source]
+[source, lua]
 ....
 local o = vim.o
 local wo = vim.wo
@@ -684,7 +682,7 @@ vim.cmd([[colorscheme everforest]])
 Now create a reference to the settings file in ~/.config/nvim/init.lua
 file like this:
 
-[source]
+[source, lua]
 ....
 -- Environment settings in lua/settings.lua
 require('settings')
@@ -711,6 +709,7 @@ require("everforest").setup({
 
 Now edit the ~/config/nvim/lua/plugins.lua
 
+[source, lua]
 ....
   -- https://github.com/neanias/everforest-nvim
   use({
@@ -772,6 +771,8 @@ Use of other packages can be seen in the screenshots, and they are:
 * git - version control
 * sysstat - for the sar utility
 * redshift - adjusts the color temperature of your screen
+
+Install those from DNF
 
 [source, bash]
 ....
