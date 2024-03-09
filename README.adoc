@@ -764,7 +764,7 @@ image:images/zathura.png[image]
 
 Use of other packages can be seen in the screenshots, and they are:
 
-[circle]
+[disc]
 * chromium - browser
 * exa - a modern replacement for ls
 * feh - wallpaper launcher
