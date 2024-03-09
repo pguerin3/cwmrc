@@ -1,3 +1,12 @@
+
+= The Calm Window Manager (CWM)
+Authored by me
+:description: setup for a minimalist interface.
+:url-repo: https://github.com/pguerin3/cwmrc
+:url-adoc: https://docs.gitlab.com/ee/user/asciidoc.html
+
+// https://docs.gitlab.com/ee/user/asciidoc.html
+
 == The Calm Window Manager (CWM) - a minimalist floating window manager that also tiles
 
 image:images/screen2.png[tiled windows]
@@ -5,17 +14,18 @@ image:images/screen2.png[tiled windows]
 image:images/screen.png[tiled windows]
 
 image:images/screen1.png[tiled windows]
-
+  
+[%hardbreaks]
 This repository showcases configuration of the Calm Window Manager (CWM)
 to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
 
-* [x] float windows by default.
-* [x] snap any window into a corner, or edge of the screen.
-* [x] snap the floating windows into a tiling configuration. eg either
+[x] float windows by default.
+[x] snap any window into a corner, or edge of the screen.
+[x] snap the floating windows into a tiling configuration. eg either
 horizontal master/stack, or vertical master/stack.
-* [x] retain gaps between the windows and the edge of the screen.
+[x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with
 the mouse or touchpad. eg use the keyboard to launch applications.
@@ -97,27 +107,32 @@ $ chromium-browser&
 
 or to ignore any run-time errors:
 
+[source, bash]
 ....
 $ chromium-browser > /dev/null 2>&1 &
 ....
 
 Add the disown command to detach the application from the terminal:
 
+[source, bash]
 ....
-$ chromium-browser > /dev/null 2>&1 &; disown
+$ chromium-browser > /dev/null 2>&1 & disown
 ....
 
 As systemd is used, managing the host from the shell can also be
 achieved with the following commands:
 
+[source, bash]
 ....
 systemctl suspend
 ....
 
+[source, bash]
 ....
 systemctl reboot
 ....
 
+[source, bash]
 ....
 systemctl poweroff
 ....
@@ -131,24 +146,28 @@ https://github.com/leahneukirchen/cwm[https://github.com/leahneukirchen/cwm]
 Most Linux distributions have the CWM in their repository. So installing
 CWM is extremely easy. For example, to install in Fedora:
 
+[source, bash]
 ....
 $ sudo dnf install cwm 
 ....
 
 For Debian:
 
+[source, bash]
 ....
 sudo apt-get install cwm
 ....
 
 For Arch:
 
+[source, bash]
 ....
 sudo pacman -S cwm
 ....
 
 FreeBSD also has CWM in their repository, and is installed as follows:
 
+[source, bash]
 ....
 sudo pkg install cwm
 ....
@@ -156,6 +175,7 @@ sudo pkg install cwm
 The ~/.cwmrc configuration file used in the screen shots is similar to
 this:
 
+[source]
 ....
 # these fonts are for the application launcher menu
 fontname fixed-13
@@ -200,6 +220,7 @@ command top     "urxvt +sb -depth 32 -bg rgba:0000/0000/0000/6666 -fg [100]cyan 
 
 Inspect the CWM manual for all the default key bindings:
 
+[source, bash]
 ....
 $ man cwm
 ....
@@ -207,9 +228,11 @@ $ man cwm
 Then inspect the CWM configuration manual for the other possibilities
 for the ~/.cwmrc file:
 
+[source, bash]
 ....
 $ man cwmrc
 ....
+
 
 == Applications
 
@@ -221,6 +244,7 @@ https://github.com/LinusDierheimer/fastfetch[https://github.com/LinusDierheimer/
 
 Fastfetch is present in the Fedora repo:
 
+[source, bash]
 ....
 $ sudo dnf install fastfetch
 ....
@@ -233,6 +257,7 @@ image:images/fastfetch.png[image]
 
 Urxvt is present in the Fedora repo:
 
+[source, bash]
 ....
 $ sudo dnf install rxvt-unicode 
 ....
@@ -246,6 +271,7 @@ Vim has exited. The same setting is set with secondaryScroll.
 Create a ~/.Xdefaults file for the configuration of the urxvt terminal.
 Place the following configuration in it:
 
+[source]
 ....
 URxvt.scrollBar: off
 # turn off the secondary screen scrolling for a pager. eg less.
@@ -262,6 +288,7 @@ URxvt.visualBell: on
 
 Kitty is in the Fedora repo:
 
+[source, bash]
 ....
 sudo dnf install kitty
 ....
@@ -274,6 +301,7 @@ Also define the font and font size you want to use with the Fish shell.
 In the config above I'm using FiraCode:
 https://github.com/tonsky/FiraCode[https://github.com/tonsky/FiraCode]
 
+[source, bash]
 ....
 $ sudo dnf install fira-code-fonts
 ....
@@ -285,6 +313,7 @@ create a configuration file yourself in the same location.
 Then you can add configurations to the head of the file similar to as
 follows:
 
+[source]
 ....
 remember_window_size no
 initial_window_width  1000
@@ -307,12 +336,14 @@ editor vim
 The Fish shell has syntax highlighting with a selection of prompts and
 colour themes. Install the Fish shell as follows:
 
+[source, bash]
 ....
 $ sudo dnf install fish 
 ....
 
 The ~/.config/fish/config.fish file is like this:
 
+[source, bash]
 ....
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -342,6 +373,7 @@ end
 The theme and prompt can also be selected from the native
 configurations. Display a list of Fish themes with:
 
+[source, bash]
 ....
 fish_config theme show
 ....
@@ -350,6 +382,7 @@ image:images/fish0003.png[image]
 
 Then choose a Fish theme like this:
 
+[source, bash]
 ....
 fish_config theme choose 'ayu Dark'
 fish_config theme save 'ayu Dark'
@@ -357,12 +390,14 @@ fish_config theme save 'ayu Dark'
 
 Similarly display a list of Fish prompts with:
 
+[source, bash]
 ....
 fish_config prompt show
 ....
 
 And choose a Fish prompt like this:
 
+[source, bash]
 ....
 fish_config prompt choose nim
 fish_config prompt save
@@ -387,6 +422,7 @@ you edit a command.
 
 Install the Zsh shell as follows:
 
+[source, bash]
 ....
 sudo dnf install zsh zsh-autosuggestions zsh-syntax-highlighting
 ....
@@ -395,6 +431,7 @@ Compared with Fish, there are less features out-of-the-box, so Zsh
 should be setup with a configuration file up-front. Create a default
 ~/.zshrc file with the following contents:
 
+[source, zsh]
 ....
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -433,6 +470,7 @@ fi
 There are a number of native command prompt themes available, and they
 can be listed with :
 
+[source, bash]
 ....
 prompt -p
 ....
@@ -448,6 +486,7 @@ image:images/zsh0001.png[image]
 Transparency in the terminal is enabled in the terminal, but the
 transparency itself is performed by Picom:
 
+[source, bash]
 ....
 $ sudo dnf install picom
 ....
@@ -456,6 +495,7 @@ $ sudo dnf install picom
 
 Status bar can be provided by Polybar:
 
+[source, bash]
 ....
 $ sudo dnf install polybar
 ....
@@ -465,6 +505,7 @@ In the Fedora repo there is an example config file installed by default:
 
 However this file can be copied to: ~/.config/polybar/config.ini
 
+[source, bash]
 ....
 $ mkdir ~/.config/polybar/
 $ cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config.ini
@@ -482,12 +523,14 @@ For Fedora, you may need to install the right fonts (eg siji, and
 NotoColorEmoji) for the Polybar config file. Also need the xset app for
 the siji font below:
 
+[source, bash]
 ....
 $ sudo dnf install xset
 ....
 
 Then follow the instructions in github to install the siji font:
 
+[source]
 ....
 https://github.com/stark/siji
 ....
@@ -495,6 +538,7 @@ https://github.com/stark/siji
 Now ensure the Polybar config.ini file refers to the google-noto-emoji
 font:
 
+[source]
 ....
 font-0 = fixed:pixelsize=10;1
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
@@ -505,6 +549,7 @@ font-2 = siji:pixelsize=10;1
 
 Then run the example bar with:
 
+[source, bash]
 ....
 $ polybar example&
 ....
@@ -529,6 +574,7 @@ that the Lua language can be used for configuration.
 
 Install Neovim in Fedora like this:
 
+[source, bash]
 ....
 sudo dnf install neovim
 ....
@@ -539,6 +585,7 @@ following steps.
 
 Create a Lua directory for Neovim:
 
+[source, bash]
 ....
 mkdir -p ~/.config/nvim/lua
 ....
@@ -547,6 +594,7 @@ Now create a settings file using Lua in ~/.config/nvim/lua/settings.lua
 The settings file will be based on your current vim.init file, but now
 the Lua syntax will be used instead.
 
+[source]
 ....
 local o = vim.o
 local wo = vim.wo
@@ -624,6 +672,7 @@ vim.cmd([[colorscheme everforest]])
 Now create a reference to the settings file in ~/.config/nvim/init.lua
 file like this:
 
+[source]
 ....
 -- Environment settings in lua/settings.lua
 require('settings')
@@ -673,9 +722,10 @@ image:images/nvim.png[image]
 It's possible to view PDFs with your browser, but a dedicated PDF viewer
 can be more convenient.
 
+[source, bash]
 ....
-dnf install zathura zathura-plugins-all
-dnf install zathura-fish-completion
+sudo dnf install zathura zathura-plugins-all
+sudo dnf install zathura-fish-completion
 ....
 
 Some of the key bindings are the same as Vim, with the basics as:
@@ -691,6 +741,7 @@ Some of the key bindings are the same as Vim, with the basics as:
 
 Viewing a PDF is as easy as:
 
+[source, bash]
 ....
 zathura <name of pdf>
 ....
@@ -709,6 +760,7 @@ Use of other packages can be seen in the screenshots, and they are:
 * sysstat - for the sar utility
 * redshift - adjusts the color temperature of your screen
 
+[source, bash]
 ....
 $ sudo dnf install chromium exa feh xclip vim-X11 git sysstat redshift
 ....
@@ -771,6 +823,7 @@ fastestmirror=True
 Can use ~/.initrc to start the default the applications, before starting
 CWM:
 
+[source, bash]
 ....
 xrandr --output VGA-0 --auto
 
@@ -790,6 +843,7 @@ exec cwm
 
 Now start the Calm Window Manager with:
 
+[source, bash]
 ....
 startx
 ....
