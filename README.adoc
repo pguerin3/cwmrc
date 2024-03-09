@@ -9,7 +9,7 @@ Authored by me
 // https://docs.gitlab.com/ee/user/asciidoc.html
 // Note: It’s possible to generate diagrams and flowcharts from text in GitLab using Mermaid or PlantUML.
 
-== The Calm Window Manager (CWM) - a minimalist floating window manager that also tiles
+== A minimalist floating window manager that also tiles
 
 image:images/screen2.png[tiled windows]
 
@@ -23,11 +23,11 @@ to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
 
-* [x] float windows by default.
-* [x] snap any window into a corner, or edge of the screen.
-* [x] snap the floating windows into a tiling configuration. eg either
+ [x] float windows by default.
+ [x] snap any window into a corner, or edge of the screen.
+ [x] snap the floating windows into a tiling configuration. eg either
 horizontal master/stack, or vertical master/stack.
-* [x] retain gaps between the windows and the edge of the screen.
+ [x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with
 the mouse or touchpad. eg use the keyboard to launch applications.
