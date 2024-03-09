@@ -17,18 +17,18 @@ image:images/screen2.png[tiled windows]
 image:images/screen.png[tiled windows]
 
 image:images/screen1.png[tiled windows]
-  
+
 [%hardbreaks]
 This repository showcases configuration of the Calm Window Manager (CWM)
 to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
 
-[x] float windows by default.
-[x] snap any window into a corner, or edge of the screen.
-[x] snap the floating windows into a tiling configuration. eg either
+ [x] float windows by default.
+ [x] snap any window into a corner, or edge of the screen.
+ [x] snap the floating windows into a tiling configuration. eg either
 horizontal master/stack, or vertical master/stack.
-[x] retain gaps between the windows and the edge of the screen.
+ [x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with
 the mouse or touchpad. eg use the keyboard to launch applications.
@@ -109,21 +109,21 @@ Or you may run applications from the shell. For example:
 
 [source, bash]
 ....
-$ chromium-browser&
+chromium-browser&
 ....
 
 or to ignore any run-time errors:
 
 [source, bash]
 ....
-$ chromium-browser > /dev/null 2>&1 &
+chromium-browser > /dev/null 2>&1 &
 ....
 
 Add the disown command to detach the application from the terminal:
 
 [source, bash]
 ....
-$ chromium-browser > /dev/null 2>&1 & disown
+chromium-browser > /dev/null 2>&1 & disown
 ....
 
 As systemd is used, managing the host from the shell can also be
@@ -158,7 +158,7 @@ CWM is extremely easy. For example, to install in Fedora:
 
 [source, bash]
 ....
-$ sudo dnf install cwm 
+sudo dnf install cwm 
 ....
 
 For Debian:
@@ -232,7 +232,7 @@ Inspect the CWM manual for all the default key bindings:
 
 [source, bash]
 ....
-$ man cwm
+man cwm
 ....
 
 Then inspect the CWM configuration manual for the other possibilities
@@ -240,7 +240,7 @@ for the ~/.cwmrc file:
 
 [source, bash]
 ....
-$ man cwmrc
+man cwmrc
 ....
 
 
@@ -259,7 +259,7 @@ Fastfetch is present in the Fedora repo:
 
 [source, bash]
 ....
-$ sudo dnf install fastfetch
+sudo dnf install fastfetch
 ....
 
 This is what Fastfetch looks like on Fedora.
@@ -272,7 +272,7 @@ Urxvt is present in the Fedora repo:
 
 [source, bash]
 ....
-$ sudo dnf install rxvt-unicode 
+sudo dnf install rxvt-unicode 
 ....
 
 My urxvt terminal is configured without scroll bars. Also use
@@ -316,7 +316,7 @@ https://github.com/tonsky/FiraCode[https://github.com/tonsky/FiraCode]
 
 [source, bash]
 ....
-$ sudo dnf install fira-code-fonts
+sudo dnf install fira-code-fonts
 ....
 
 Kitty can autocreate a default configuration file in
@@ -351,7 +351,7 @@ colour themes. Install the Fish shell as follows:
 
 [source, bash]
 ....
-$ sudo dnf install fish 
+sudo dnf install fish 
 ....
 
 The ~/.config/fish/config.fish file is like this:
@@ -395,7 +395,7 @@ image:images/fish0003.png[image]
 
 Then choose a Fish theme like this:
 
-[source, bash]
+[source, fish]
 ....
 fish_config theme choose 'ayu Dark'
 fish_config theme save 'ayu Dark'
@@ -403,14 +403,14 @@ fish_config theme save 'ayu Dark'
 
 Similarly display a list of Fish prompts with:
 
-[source, bash]
+[source, fish]
 ....
 fish_config prompt show
 ....
 
 And choose a Fish prompt like this:
 
-[source, bash]
+[source, fish]
 ....
 fish_config prompt choose nim
 fish_config prompt save
@@ -501,7 +501,7 @@ transparency itself is performed by Picom:
 
 [source, bash]
 ....
-$ sudo dnf install picom
+sudo dnf install picom
 ....
 
 === Status bar with Polybar
@@ -510,7 +510,7 @@ Status bar can be provided by Polybar:
 
 [source, bash]
 ....
-$ sudo dnf install polybar
+sudo dnf install polybar
 ....
 
 In the Fedora repo there is an example config file installed by default:
@@ -520,8 +520,8 @@ However this file can be copied to: ~/.config/polybar/config.ini
 
 [source, bash]
 ....
-$ mkdir ~/.config/polybar/
-$ cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config.ini
+mkdir ~/.config/polybar/
+cp /usr/share/doc/polybar/examples/config.ini ~/.config/polybar/config.ini
 ....
 
 By default, this is what it looks like (need the prerequisite fonts
@@ -538,7 +538,7 @@ the siji font below:
 
 [source, bash]
 ....
-$ sudo dnf install xset
+sudo dnf install xset
 ....
 
 Then follow the instructions in github to install the siji font:
@@ -561,7 +561,7 @@ Then run the example bar with:
 
 [source, bash]
 ....
-$ polybar example&
+polybar example&
 ....
 
 Or place the above command in the CWM configuration file (shown below).
@@ -741,6 +741,7 @@ sudo dnf install zathura-fish-completion
 
 Some of the key bindings are the same as Vim, with the basics as:
 
+[square]
 * j = down
 * k = up
 * g = top of document
@@ -776,7 +777,7 @@ Install those from DNF
 
 [source, bash]
 ....
-$ sudo dnf install chromium exa feh xclip vim-X11 git sysstat redshift
+sudo dnf install chromium exa feh xclip vim-X11 git sysstat redshift
 ....
 
 === Other configurations
@@ -837,8 +838,7 @@ fastestmirror=True
 
 ==== X11 startx configuration
 
-Can use ~/.initrc to start the default the applications, before starting
-CWM:
+Can use ~/.initrc to start the default the applications, before starting CWM:
 
 [source, bash]
 ....
