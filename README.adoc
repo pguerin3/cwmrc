@@ -837,7 +837,7 @@ fastestmirror=True
 
 ==== X11 startx configuration
 
-Can use ~/.initrc to start the default the applications, before starting CWM:
+Can use ~/.xinitrc to start the default the applications, before starting CWM:
 
 [source, bash]
 ....
