@@ -12,6 +12,8 @@ Authored by me
 
 == A minimalist floating window manager that also tiles
 
+image:images/fullscreenshot.png[tiled windows]
+
 image:images/screen2.png[tiled windows]
 
 image:images/screen.png[tiled windows]
