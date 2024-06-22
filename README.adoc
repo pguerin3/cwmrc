@@ -447,9 +447,6 @@ if [[ $TTY = /dev/pts/1 ]]; then
     tmux
 fi
 
-# add Pulumi to the PATH
-export PATH=$PATH:$HOME/.pulumi/bin
-
 autoload -Uz promptinit
 promptinit
 
@@ -919,12 +916,13 @@ Use of other packages can be seen in the screenshots, and they are:
 * git - version control
 * sysstat - for the sar utility
 * redshift - adjusts the color temperature of your screen
+* flameshot - for screenshots
 
 Install those from DNF
 
 [source, bash]
 ....
-sudo dnf install chromium exa feh xclip vim-X11 git sysstat redshift
+sudo dnf install chromium exa feh xclip vim-X11 git sysstat redshift flameshot
 ....
 
 So using xsel or xclip you can copy selections as follows:
@@ -936,6 +934,12 @@ xsel -o --primary| xsel -i --clipboard
 xclip -o -selection primary| xclip -i -selection clipboard
 ....
 
+Flameshot can be used like this:
+
+[source, bash]
+....
+flameshot gui
+....
 
 === Other configurations
 
