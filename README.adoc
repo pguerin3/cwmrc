@@ -23,11 +23,11 @@ to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
 
-* [x] float windows by default.
-* [x] snap any window into a corner, or edge of the screen.
-* [x] snap the floating windows into a tiling configuration. eg either
+[x] float windows by default.
+[x] snap any window into a corner, or edge of the screen.
+[x] snap the floating windows into a tiling configuration. eg either
 horizontal master/stack, or vertical master/stack.
-* [x] retain gaps between the windows and the edge of the screen.
+[x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with
 the mouse or touchpad. eg use the keyboard to launch applications.
@@ -186,11 +186,14 @@ this:
 
 [source]
 ....
+# CMS-r = restart
 # these fonts are for the application launcher menu
-fontname fixed-13
+#fontname fixed-13
+fontname fixed-11
 
+moveamount 10	# granularity of finest movement
 vtile 50
-htile 50
+htile 75
 gap 1 1 1 1
 color activeborder red
 color inactiveborder black
@@ -204,8 +207,8 @@ autogroup 1 kitty,kitty
 autogroup 2 urxvt,URxvt
 autogroup 3 brave-browser, Brave-browser
 autogroup 4 chromium-browser,Chromium-browser
-autogroup 5 pcmanfm,Pcmanfm
 autogroup 6 "VirtualBox Manager", "VirtualBox Manager"
+autogroup 7 "VirtualBox Machine", "VirtualBox Machine"
 autogroup 8 "vncviewer", "Vncviewer"
 
 bind-key M-1 group-toggle-1
@@ -218,13 +221,16 @@ bind-key M-7 group-toggle-7
 bind-key M-8 group-toggle-8
 bind-key M-0 group-toggle-all
 
-ignore polybar
+#ignore polybar
 
 # for the native application menu
+command xscreensaver	"xscreensaver"
 command urxvt   "urxvt"
 command kitty   "kitty"
 command top-green   "urxvt +sb -depth 32 -bg rgba:1111/1111/1111/9999 -fg [100]green -e top"
 command top     "urxvt +sb -depth 32 -bg rgba:0000/0000/0000/6666 -fg [100]cyan -e top"
+command vim		"urxvt -e vim ."
+
 ....
 
 Inspect the CWM manual for all the default key bindings:
@@ -265,6 +271,19 @@ This is what Fastfetch looks like on Fedora.
 
 image:images/fastfetch.png[image]
 
+However I can also use an actual image for the graphic, if I download a suitable
+image like as follows:
+
+https://fedoraproject.org/wiki/File:Fedora_logo.png
+
+Then I can call Fastfetch to use the image.
+
+[source, bash]
+....
+fastfetch --logo-type kitty --logo-width 60 --logo ~/Downloads/Fedora_logo.png
+....
+
+
 === The virtual terminal with Urxvt
 
 Urxvt is present in the Fedora repo:
@@ -289,7 +308,9 @@ URxvt.scrollBar: off
 # turn off the secondary screen scrolling for a pager. eg less.
 URxvt.secondaryScroll: off
 URxvt.depth: 32
-URxvt.background: rgba:0000/0000/0000/aaaa
+# black (0000/0000/0000) with no transparency (ffff)
+# grey (1111/1111/1111) with no transparency (ffff)
+URxvt.background: rgba:0000/0000/0000/ffff
 URxvt.foreground: [100]grey
 URxvt.font: xft:monospace:pixelsize=12
 URxvt.geometry: 132x50
@@ -343,9 +364,127 @@ visual_bell_duration 0.1
 editor vim
 ....
 
+
+=== Terminal shell with Zsh
+
+The Zsh shell is pretty plain out-of-the box but can be configured easily enough.
+
+Unlike Fish, Zsh as a vim mode so you can escape and then use the vim key 
+bindings to help you edit a command.
+
+Install the Zsh shell as follows:
+
+[source, bash]
+....
+sudo dnf install zsh zsh-autosuggestions zsh-syntax-highlighting
+....
+
+Compared with Fish, there are less features out-of-the-box, so Zsh
+should be setup with a configuration file up-front. Create a default
+~/.zshrc file with the following contents:
+
+[source, zsh]
+....
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd beep extendedglob nomatch notify
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/me/.zshrc'
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+alias ls='ls --color=auto --group-directories-first -v'
+#Seems to be more colourful without the following
+#LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
+#export LS_COLORS
+
+setxkbmap -layout us -variant EngramMod
+# ZSH uses the ZSH line editor (ZLE) but in Bash can use cntrl-x cntrl-e
+# in Tmux, EDITOR can set the vi mode key bindings. ie mode-keys and status-keys.
+# Note: the following works if the command line is still in insert mode
+EDITOR=nvim
+autoload -U edit-command-line; 
+zle -N edit-command-line; 
+bindkey '^x^e' edit-command-line;
+
+setopt autocd
+setopt correctall
+
+# removes copies of lines still in the history list, keeping the newly added one
+setopt HIST_IGNORE_ALL_DUPS
+
+# Show the man page in Neovim
+export MANPAGER='nvim +Man!'
+
+# execute fastfetch only on the zsh login shell
+# Will be named: /dev/tty1
+# download image: https://fedoraproject.org/wiki/File:Fedora_logo.png
+if [[ $0 = -zsh ]]; then 
+  fastfetch
+fi
+
+# execute only on the first TTY created
+# /dev/pts/0
+if [[ $TTY = /dev/pts/0 ]]; then
+  fastfetch --logo-type kitty --logo-width 60 --logo ~/Downloads/Fedora_logo.png
+  redshift -l manual -l -34.43:150.85 -t 6500:3000&
+  ~/./battery.sh&
+  jobs
+  cd ~/me; ls -lhalr; git pull
+fi
+
+# execute only on the second TTY created
+# /dev/pts/1
+if [[ $TTY = /dev/pts/1 ]]; then
+    tmux
+fi
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
+
+autoload -Uz promptinit
+promptinit
+
+prompt walters
+PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
+RPROMPT='[%F{yellow}%?%f]'
+
+# perhaps a better syntax highlighting
+#Clone the Repository.
+#git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/usr/share
+#And add the following to your zshrc file.
+source ~/usr/share/fast-syntax-highlighting.plugin.zsh
+
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Note: zsh-syntax-highlighting is supposed to be at the end of the .zshrc file
+#ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
+#source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+....
+
+There are a number of native command prompt themes available, and they
+can be listed with :
+
+[source, bash]
+....
+prompt -p
+....
+
+image:images/zsh0002.png[image]
+
+An example of a basic Zsh command prompt theme (eg walters) is below:
+
+image:images/zsh0001.png[image]
+
+
 === An interactive shell with Fish
 
-The Fish shell has syntax highlighting with a selection of prompts and
+The Fish shell has syntax highlighting out-of-the box with a selection of prompts and
 colour themes. Install the Fish shell as follows:
 
 [source, bash]
@@ -425,73 +564,6 @@ image:images/fish0002.png[image]
 
 When no jobs are present then the normal prompt returns.
 
-=== Terminal shell with Zsh
-
-The Zsh shell is more of a Bash syntax with some of the Fish benefits
-including syntax highlighting and auto suggestions. Unlike Fish, Zsh as
-a vim mode so you can escape and then use the vim key bindings to help
-you edit a command.
-
-Install the Zsh shell as follows:
-
-[source, bash]
-....
-sudo dnf install zsh zsh-autosuggestions zsh-syntax-highlighting
-....
-
-Compared with Fish, there are less features out-of-the-box, so Zsh
-should be setup with a configuration file up-front. Create a default
-~/.zshrc file with the following contents:
-
-[source, zsh]
-....
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd beep extendedglob nomatch notify
-bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/me/.zshrc'
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-alias ls='ls --color=auto --group-directories-first -v'
-EDITOR=vim
-setopt autocd
-setopt correctall
-
-autoload -Uz promptinit
-promptinit
-
-prompt walters
-PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
-RPROMPT='[%F{yellow}%?%f]'
-
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# execute fastfetch on the first terminal only
-if [ $(ps a -o tty $(pgrep $(echo $TERM)) | uniq --unique | wc -l) -eq 1 ]; then
-  fastfetch
-fi
-....
-
-There are a number of native command prompt themes available, and they
-can be listed with :
-
-[source, bash]
-....
-prompt -p
-....
-
-image:images/zsh0002.png[image]
-
-An example of a basic Zsh command prompt theme (eg walters) is below:
-
-image:images/zsh0001.png[image]
 
 === Window transparency with Picom
 
@@ -619,17 +691,23 @@ o.linebreak=true
 o.visualbell = true
 o.mousefocus = true
 o.behave = 'xterm'
---o.termpastefilter = 'BS,HT,ESC,DEL,C0,C1'
+-- Note: default termpastefilter is 'BS,HT,ESC,DEL'
 o.termpastefilter = o.termpastefilter..',C0,C1'
+-- The minimal width of a window, when it's not the current window.
 o.winminwidth = 12
 -- for everforest
 o.background='dark'
+-- for the cursor for each mode
 o.guicursor='n-v-c:block,'..
     'i-ci-ve:ver25,'..
     'r-cr:hor20,'..
     'o:hor50,'..
     'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,'..
     'sm:block-blinkwait175-blinkoff150-blinkon175'
+
+o.wrapscan = true
+o.autochdir = true
+o.colorcolumn = '81'
 
 -- window-local options
 wo.number = true
@@ -662,7 +740,7 @@ vim.api.nvim_exec(
 -- Short-hand for vim.api.nvim_exec
 -- set the format for NETRW
 vim.cmd([[
-    let g:netrw_liststyle=2
+    let g:netrw_liststyle=3
     let g:netrw_keepdir=0
     let g:netrw_sizestyle='H'
 ]])
@@ -671,6 +749,7 @@ vim.cmd([[
 vim.cmd([[
     au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}
 ]])
+
 
 --set the colorscheme from the core selections.
 --vim.api.nvim_command('colorscheme darkblue')
@@ -683,15 +762,26 @@ file like this:
 
 [source, lua]
 ....
--- Environment settings in lua/settings.lua
-require('settings')
+-- lua/plugins.lua
+require('plugins')
 require('packer')
+require('neoscroll').setup()
+require'shade'.setup({
+  overlay_opacity = 50,
+  opacity_step = 1,
+  keys = {
+    brightness_up    = '<C-Up>',
+    brightness_down  = '<C-Down>',
+    toggle           = '<Leader>s',
+  }
+})
+require('base16-colorscheme')
 
 -- https://github.com/neanias/everforest-nvim
 require("everforest").setup({
   -- Controls the "hardness" of the background. Options are "soft", "medium" or "hard".
   -- Default is "medium".
-  background = "medium",
+  background = "hard",
   -- How much of the background should be transparent. Options are 0, 1 or 2.
   -- Default is 0.
   --
@@ -704,12 +794,49 @@ require("everforest").setup({
   -- this to `true` to make them _not_ italic!
   disable_italic_comments = false,
 })
+
+-- Environment settings in lua/settings.lua
+require('settings')
 ....
 
 Now edit the ~/config/nvim/lua/plugins.lua
 
 [source, lua]
 ....
+-- automatically install and set up packer.nvim on any machine you clone your configuration to
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+-- configure Neovim to automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
+return require('packer').startup({function()
+  -- My plugins here
+  -- use 'foo1/bar1.nvim'
+  -- use 'foo2/bar2.nvim'
+
+  -- Packer can manage itself
+  use {'wbthomason/packer.nvim'}
+
+  -- Neoscroll: a smooth scrolling neovim plugin written in lua
+  -- https://github.com/karb94/neoscroll.nvim
+  use {'karb94/neoscroll.nvim'}
+
+  -- Shade is a Neovim plugin that dims your inactive windows, making it easier to see the active window at a glance.
+  -- https://github.com/sunjon/Shade.nvim
+  use {'sunjon/shade.nvim'}
+
+  -- https://github.com/RRethy/nvim-base16
+  use {'RRethy/nvim-base16'}
+
   -- https://github.com/neanias/everforest-nvim
   use({
   "neanias/everforest-nvim",
@@ -718,6 +845,24 @@ Now edit the ~/config/nvim/lua/plugins.lua
     require("everforest").setup()
   end,
   })
+
+-- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end,
+-- use a floating window with single borders for command outputs 
+config = {
+  display = {
+    --open_fn = require('packer.util').float,
+	open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}
+})
+
 ....
 
 Now install and resync the plugin like this: :PackerInstall :PackerSync
@@ -778,6 +923,16 @@ Install those from DNF
 ....
 sudo dnf install chromium exa feh xclip vim-X11 git sysstat redshift
 ....
+
+So using xsel or xclip you can copy selections as follows:
+
+[source, bash]
+....
+xsel -o --primary| xsel -i --clipboard
+
+xclip -o -selection primary| xclip -i -selection clipboard
+....
+
 
 === Other configurations
 
