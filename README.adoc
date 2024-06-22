@@ -407,7 +407,6 @@ alias ls='ls --color=auto --group-directories-first -v'
 #LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 #export LS_COLORS
 
-setxkbmap -layout us -variant EngramMod
 # ZSH uses the ZSH line editor (ZLE) but in Bash can use cntrl-x cntrl-e
 # in Tmux, EDITOR can set the vi mode key bindings. ie mode-keys and status-keys.
 # Note: the following works if the command line is still in insert mode
