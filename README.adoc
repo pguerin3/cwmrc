@@ -283,6 +283,8 @@ Then I can call Fastfetch to use the image.
 fastfetch --logo-type kitty --logo-width 60 --logo ~/Downloads/Fedora_logo.png
 ....
 
+image:images/fastfetch1.png[image]
+
 
 === The virtual terminal with Urxvt
 
