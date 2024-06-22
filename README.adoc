@@ -365,7 +365,7 @@ font_family Fira Code Regular
 font_size 10
 enable_audio_bell no
 visual_bell_duration 0.1
-editor vim
+editor nvim
 ....
 
 
@@ -1013,6 +1013,8 @@ picom&
 
 #uncomment to execute by default
 #polybar example&
+
+dunst&
 
 redshift -l manual -l -34.43:150.85 -t 6500:3000&
 
