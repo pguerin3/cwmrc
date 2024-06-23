@@ -25,11 +25,11 @@ to keep the minimal asthetic, but at the same time make more practical.
 
 CWM is a minimalist floating window manager:
 
-[x] float windows by default.
-[x] snap any window into a corner, or edge of the screen.
-[x] snap the floating windows into a tiling configuration. eg either
-horizontal master/stack, or vertical master/stack.
-[x] retain gaps between the windows and the edge of the screen.
+x [x] float windows by default.
+x [x] snap any window into a corner, or edge of the screen.
+x [x] snap the floating windows into a tiling configuration. eg either
+x [x] horizontal master/stack, or vertical master/stack.
+x [x] retain gaps between the windows and the edge of the screen.
 
 Also there is also a native application launcher that you can drive with
 the mouse or touchpad. eg use the keyboard to launch applications.
@@ -369,6 +369,44 @@ editor nvim
 ....
 
 
+=== Terminal multiplexing with Tmux
+
+Handy to have, so install it:
+
+[source, bash]
+....
+sudo dnf install tmux
+....
+
+Create a default
+~/.tmux.conf file with the following contents:
+
+[source, tmux]
+....
+# theme
+#set -g @plugin 'catppuccin/tmux'
+# ...alongside
+set -g @plugin 'tmux-plugins/tpm'
+
+#set -g @catppuccin_flavour 'latte' # or frappe, macchiato, mocha
+
+set -g status-position top
+# status bar
+set -g status-style "bg=black"
+set -ag status-style "fg=yellow"
+# inactive status bar
+set -g window-status-style bg=yellow
+# active status bar
+set -g window-status-current-style bg=red,fg=white
+
+set -g mode-keys vi
+set -g mouse
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+....
+
+
 === Terminal shell with Zsh
 
 The Zsh shell is pretty plain out-of-the box but can be configured easily enough.
@@ -383,56 +421,53 @@ Install the Zsh shell as follows:
 sudo dnf install zsh zsh-autosuggestions zsh-syntax-highlighting
 ....
 
+We will use a Zsh plugin manager:
+
+https://github.com/zap-zsh/zap
+
+Install it as follows:
+
+[source, bash]
+....
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+....
+
 Compared with Fish, there are less features out-of-the-box, so Zsh
-should be setup with a configuration file up-front. Create a default
-~/.zshrc file with the following contents:
+should be setup with a configuration file up-front. 
+Create a default ~/.zshrc file with the following contents:
 
 [source, zsh]
 ....
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd beep extendedglob nomatch notify
-bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/me/.zshrc'
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
+# Created by Zap installer
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+plug "zsh-users/zsh-autosuggestions"
+#plug "zap-zsh/supercharge"
+#plug "zap-zsh/zap-prompt"
+#plug "zsh-users/zsh-syntax-highlighting"
+#plug "zsh-zsh/vim"
 
-alias ls='ls --color=auto --group-directories-first -v'
-#Seems to be more colourful without the following
-#LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
-#export LS_COLORS
+plug 'zdharma-continuum/fast-syntax-highlighting'
+plug 'zsh-users/zsh-history-substring-search'
 
-# ZSH uses the ZSH line editor (ZLE) but in Bash can use cntrl-x cntrl-e
-# in Tmux, EDITOR can set the vi mode key bindings. ie mode-keys and status-keys.
-# Note: the following works if the command line is still in insert mode
-EDITOR=nvim
-autoload -U edit-command-line; 
-zle -N edit-command-line; 
-bindkey '^x^e' edit-command-line;
-
-setopt autocd
-setopt correctall
-
-# removes copies of lines still in the history list, keeping the newly added one
-setopt HIST_IGNORE_ALL_DUPS
-
+################################################################
+# environment variables
+################################################################
 # Show the man page in Neovim
 export MANPAGER='nvim +Man!'
 
+alias ls='ls --color=auto --group-directories-first -v'
+# for Tmux, set the mode for key bindings
+EDITOR=nvim
+
 # execute fastfetch only on the zsh login shell
 # Will be named: /dev/tty1
-# download image: https://fedoraproject.org/wiki/File:Fedora_logo.png
 if [[ $0 = -zsh ]]; then 
   fastfetch
 fi
 
 # execute only on the first TTY created
 # /dev/pts/0
+# download image: https://fedoraproject.org/wiki/File:Fedora_logo.png
 if [[ $TTY = /dev/pts/0 ]]; then
   fastfetch --logo-type kitty --logo-width 60 --logo ~/Downloads/Fedora_logo.png
   redshift -l manual -l -34.43:150.85 -t 6500:3000&
@@ -447,23 +482,140 @@ if [[ $TTY = /dev/pts/1 ]]; then
     tmux
 fi
 
-autoload -Uz promptinit
+################################################################
+# Autoload functions and themes
+# Note - needs to be set before the prompt is shown in the terminal
+################################################################
+# Created by newuser for 5.8
+autoload -Uz compinit promptinit
+compinit
+# a prompt theme system for changing prompts easily
 promptinit
 
+# This will set the default prompt to the walters theme
 prompt walters
+
+##################################################
+# shell parameters
+##################################################
+# keep the history file independent from the Bash history file.
+# Note: stores interactive history only
+HISTFILE=~/.histfile
+# max number of events stored
+# Immediately before execution, each command is saved in the history list, the size of which is
+# controlled by the HISTSIZE parameter.
+HISTSIZE=1000
+SAVEHIST=$HISTSIZE
+
+# The default editor for the fc builtin.
+# Note: will follow EDITOR, if blank.
+FCEDIT='nvim'
+
+# output to the terminal instead of beeping.
+# eg flashing reverse video on and off.
+ZBEEP='\e[?5h\e[?5l'
+
+# The primary prompt string, printed before a command is read.
+# Note: same as PS1
 PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
+# This prompt is displayed on the right-hand side of the screen when the primary
+# prompt is being displayed on the left.
+# note; same as RPS1
 RPROMPT='[%F{yellow}%?%f]'
 
-# perhaps a better syntax highlighting
-#Clone the Repository.
-#git clone https://github.com/zdharma-continuum/fast-syntax-highlighting ~/usr/share
-#And add the following to your zshrc file.
-source ~/usr/share/fast-syntax-highlighting.plugin.zsh
+##################################################
+# options
+##################################################
+# Note: before execution, each command is saved in the history list
+# Beep in ZLE when a widget attempts to access a history entry which isn’t there.
+setopt HIST_BEEP
+# removes copies of lines still in the history list, keeping the newly added one
+setopt HIST_IGNORE_ALL_DUPS
+# zsh sessions will append their history list to the history file, rather than replace it.
+setopt APPEND_HISTORY
+# both imports new commands from the history file, and also causes your typed commands to be appended to the history file
+setopt SHARE_HISTORY
+# Remove command lines from the history list when the first character on the line is a space.
+setopt HIST_IGNORE_SPACE
+# If a new command line being added to the history list duplicates an older one, the older command is removed from the list
+setopt HIST_IGNORE_ALL_DUPS
+# When writing out the history file, older commands that duplicate newer ones are omitted.
+setopt HIST_SAVE_NO_DUPS
+# Do not enter command lines into the history list if they are duplicates of the previous event.
+setopt HIST_IGNORE_DUPS
+# When searching for history entries in the line editor, do not display duplicates of a line previously found.
+setopt HIST_FIND_NO_DUPS
 
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# Note: zsh-syntax-highlighting is supposed to be at the end of the .zshrc file
-#ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
+# if not a command, then assume a directory and do a cd against it.
+setopt AUTO_CD
+# Beep on error in ZLE.
+setopt BEEP
+# Treat the #, ~ and ^ characters as part of patterns for filename generation, etc.
+setopt EXTENDED_GLOB
+# If a pattern for filename generation has no matches, print an error, instead of leaving it unchanged
+setopt NOMATCH
+# Report the status of background jobs immediately, rather than waiting until just before printing a prompt.
+setopt NOTIFY
+# Try to correct the spelling of all arguments in a line.
+setopt CORRECT_all
+
+
+##################################################
+# ZSH Line Editor
+##################################################
+# Selects keymap ‘viins’ for any operations by the current command
+bindkey -v
+
+# use ^p and ^n to search through history more precisely with a starting prefix.
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+##################################################
+# Shell built in commands
+##################################################
+zstyle ':completion::complete:*' gain-privileges 1
+# make the search case insensitive for the auto-completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# add colour to the auto-completions too
+zstyle ':completion:*' list-colors "${(s,:,)LS_COLORS}"
+
+# create a zkbd compatible hash;
+# to add other keys to this hash, see: man 5 terminfo
+typeset -g -A key
+
+# The following lines were added by compinstall
+#zstyle :compinstall filename '/home/me/.zshrc'
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+	autoload -Uz add-zle-hook-widget
+	function zle_application_mode_start { echoti smkx }
+	function zle_application_mode_stop { echoti rmkx }
+	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+fi
+
+
+# man zshzle 
+# A zle widget is a synonym for zle command. Everything is a widget.
+# List bindkeys: bindkey
+# List widgets: zle -l
+# And in Bash can use cntrl-x cntrl-e (by default)
+# Can setup the same key bindings for ZLE
+# Note: for this to work correctly, need to still be in insert mode at the command line.
+autoload -U edit-command-line; 
+zle -N edit-command-line; 
+bindkey '^x^e' edit-command-line;
+
+################################################################
+# other
+################################################################
 #source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /etc/profile.d/fzf-completion.zsh
+# I don't know what this script does (is not the syntax highlighting)
+source /etc/profile.d/fzf.zsh
 
 ....
 
