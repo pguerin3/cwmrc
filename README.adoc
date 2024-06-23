@@ -613,9 +613,8 @@ bindkey '^x^e' edit-command-line;
 ################################################################
 #source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /etc/profile.d/fzf-completion.zsh
-# I don't know what this script does (is not the syntax highlighting)
-source /etc/profile.d/fzf.zsh
+#source /etc/profile.d/fzf-completion.zsh
+#source /etc/profile.d/fzf.zsh
 
 ....
 
